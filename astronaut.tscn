@@ -1,8 +1,9 @@
-[gd_scene load_steps=132 format=3 uid="uid://bml3lwe0ijbcs"]
+[gd_scene load_steps=133 format=3 uid="uid://bml3lwe0ijbcs"]
 
 [ext_resource type="Script" uid="uid://q2qgu3b62s0v" path="res://astronaut.gd" id="1_4ka33"]
 [ext_resource type="Texture2D" uid="uid://88w6nrlhovj5" path="res://Characters/Astronaut/animations/fight-stance-idle-8-frames/south/frame_000.png" id="1_ftqfi"]
 [ext_resource type="Texture2D" uid="uid://cw3rbvkrudc7t" path="res://Characters/Astronaut/animations/fight-stance-idle-8-frames/south/frame_001.png" id="2_4ka33"]
+[ext_resource type="PackedScene" uid="uid://by8127rkd7gpw" path="res://bullet.tscn" id="2_sbosw"]
 [ext_resource type="Texture2D" uid="uid://v3usfo2dqco2" path="res://Characters/Astronaut/animations/fight-stance-idle-8-frames/south/frame_002.png" id="3_sbosw"]
 [ext_resource type="Texture2D" uid="uid://cwgah3mi5plju" path="res://Characters/Astronaut/animations/fight-stance-idle-8-frames/south/frame_003.png" id="4_534no"]
 [ext_resource type="Texture2D" uid="uid://c7tvn8c0tpqrx" path="res://Characters/Astronaut/animations/fight-stance-idle-8-frames/south/frame_004.png" id="5_3pvbc"]
@@ -600,8 +601,9 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hfucl"]
 height = 42.0
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_4ka33")
+bullet_scene = ExtResource("2_sbosw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ng8kf")
