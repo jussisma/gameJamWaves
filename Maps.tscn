@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=4 uid="uid://btf3bbxjdist"]
+[gd_scene load_steps=8 format=4 uid="uid://btf3bbxjdist"]
 
 [ext_resource type="TileSet" uid="uid://i3efm74wxfiw" path="res://Sci_fi_Tileset.tres" id="1_0jkm5"]
 [ext_resource type="Texture2D" uid="uid://yg2e7sr78jeo" path="res://Light.tres" id="2_ld5ut"]
+[ext_resource type="Script" uid="uid://boyou3byg33dc" path="res://red_light.gd" id="3_74u2i"]
 [ext_resource type="PackedScene" uid="uid://n7uj0tl1h8xp" path="res://main.tscn" id="3_ld5ut"]
+[ext_resource type="Script" uid="uid://dstmg5pa7g58m" path="res://Light.gd" id="4_6c7kk"]
 
 [sub_resource type="Gradient" id="Gradient_74u2i"]
 offsets = PackedFloat32Array(0, 0.2580645, 0.5645161, 1)
@@ -20,41 +22,46 @@ tile_map_data = PackedByteArray("AAD+/wAAAQAMADAAAAD+/wEAAQAMADEAAAD+/wIAAQAMADI
 tile_set = ExtResource("1_0jkm5")
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAPACIAAQApADgAAAAPACMAAQApADkAAAAPACQAAQApADoAAAAPACUAAQApADsAAAAQACIAAQAqADgAAAAQACMAAQAqADkAAAAQACQAAQAqADoAAAAQACUAAQAqADsAAAA=")
+tile_map_data = PackedByteArray("AAAPACIAAQApADgAAAAPACMAAQApADkAAAAPACQAAQApADoAAAAPACUAAQApADsAAAAQACIAAQAqADgAAAAQACMAAQAqADkAAAAQACQAAQAqADoAAAAQACUAAQAqADsAAADu/xgAAQAMACAAAADu/xkAAQAMACEAAADu/xoAAQAMACIAAADv/xgAAQANACAAAADv/xkAAQANACEAAADv/xoAAQANACIAAADw/xgAAQAOACAAAADw/xkAAQAOACEAAADw/xoAAQAOACIAAADx/xkAAQAPACEAAADx/xoAAQAPACIAAAD9/ygAAQAIACAAAAD9/ykAAQAIACEAAAD9/yoAAQAIACIAAAD9/ysAAQAIACMAAAD+/ygAAQAJACAAAAD+/ykAAQAJACEAAAD+/yoAAQAJACIAAAD+/ysAAQAJACMAAAD//ygAAQAKACAAAAD//ykAAQAKACEAAAD//yoAAQAKACIAAAD//ysAAQAKACMAAAAAACgAAQALACAAAAAAACkAAQALACEAAAAAACoAAQALACIAAAAAACsAAQALACMAAAD///3/AQABACEAAAD///7/AQABACIAAAAAAP3/AQACACEAAAAAAP7/AQACACIAAAACAAEAAQABACEAAAACAAIAAQABACIAAAADAAEAAQACACEAAAADAAIAAQACACIAAAAHAAIAAQABACEAAAAHAAMAAQABACIAAAAIAAIAAQACACEAAAAIAAMAAQACACIAAAA=")
 tile_set = ExtResource("1_0jkm5")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.0885599, 0.0885599, 0.0885599, 1)
+color = Color(0.13682574, 0.13682574, 0.13682568, 1)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(141, 39.999985)
 scale = Vector2(5.5, 5.28125)
 color = Color(1, 0.015686275, 0.05882353, 1)
 texture = ExtResource("2_ld5ut")
+script = ExtResource("3_74u2i")
 
 [node name="PointLight2D2" type="PointLight2D" parent="."]
 position = Vector2(-118.99997, 160)
 scale = Vector2(5.5, 5.28125)
 color = Color(1, 0.015686275, 0.05882353, 1)
 texture = ExtResource("2_ld5ut")
+script = ExtResource("3_74u2i")
 
 [node name="PointLight2D3" type="PointLight2D" parent="."]
 position = Vector2(328.99997, 436.00003)
 scale = Vector2(4.796875, 6.4531245)
 color = Color(1, 0.9372549, 0.5137255, 1)
 texture = ExtResource("2_ld5ut")
+script = ExtResource("4_6c7kk")
 
 [node name="PointLight2D4" type="PointLight2D" parent="."]
 position = Vector2(-234.25002, 455)
 scale = Vector2(8.367187, 6.4531245)
 color = Color(1, 0.9372549, 0.5137255, 1)
 texture = ExtResource("2_ld5ut")
+script = ExtResource("4_6c7kk")
 
 [node name="PointLight2D5" type="PointLight2D" parent="."]
 position = Vector2(202.99997, 886.24994)
 scale = Vector2(4.796875, 4.1484365)
 color = Color(1, 0.9372549, 0.5137255, 1)
 texture = ExtResource("2_ld5ut")
+script = ExtResource("4_6c7kk")
 
 [node name="PointLight2D6" type="PointLight2D" parent="."]
 position = Vector2(252, 629)
