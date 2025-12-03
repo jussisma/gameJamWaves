@@ -4,10 +4,8 @@ extends Control
 signal die
 
 # Constants
-const DEFAULT_HEALTH: float = 400.0
 const DEFAULT_MAX_HEALTH: float = 500.0
 const DEFAULT_WEAPON: String = "pistol"
-const MIN_HEALTH: float = 0.0
 
 # UI References
 @onready var world_label: Label = %WorldLabel
@@ -17,8 +15,8 @@ const MIN_HEALTH: float = 0.0
 @onready var power_points_label: Label = %PowerPointsLabel
 @onready var experience_label: Label = %ExperienceLabel
 @onready var ammunition_label: Label = %AmmunitionLabel
-@onready var max_ammunition_label: Label = %MaxAmmunitionLabel
 @onready var selected_weapon_label: Label = %SelectedWeaponLabel
+@onready var weapon_image: TextureRect = %WeaponImage
 
 # Game State Variables
 var world: int = 0:
@@ -52,13 +50,13 @@ var experience: int = 0:
 		if experience_label:
 			experience_label.text = str(experience)
 
-var health: float = DEFAULT_HEALTH:
+var health: float = DEFAULT_MAX_HEALTH:
 	set(value):
-		var was_alive: bool = health > MIN_HEALTH
+		var was_alive: bool = health > 0
 		health = value
 		if health_bar:
 			health_bar.value = health
-		if was_alive and health <= MIN_HEALTH:
+		if was_alive and health <= 0:
 			die.emit()
 
 var max_health: float = DEFAULT_MAX_HEALTH:
@@ -73,49 +71,39 @@ var selected_weapon: String = DEFAULT_WEAPON:
 		selected_weapon = value
 		if selected_weapon_label:
 			selected_weapon_label.text = selected_weapon
+		# TODO if weapon_image:
+			#weapon_image.image = 
 
 var ammunition: int = 0:
 	set(value):
 		ammunition = value
-		if ammunition_label:
-			ammunition_label.text = str(ammunition)
+		_update_ammunition()
 
 var max_ammunition: int = 0:
 	set(value):
 		max_ammunition = value
-		if max_ammunition_label:
-			max_ammunition_label.text = str(max_ammunition)
-
-
-func _ready() -> void:
-	_update_all_ui_elements()
+		_update_ammunition()
 
 
 func init_ui(
 	_world: int,
 	_level: int,
 	_run: int,
-	_health: float,
 	_max_health: float,
-	_power_points: int,
-	_experience: int,
-	_ammunition: int,
 	_max_ammunition: int,
 	_selected_weapon: String) -> void:
 	world = _world
 	level = _level
 	run = _run
-	health = _health
+	health = _max_health
 	max_health = _max_health
-	power_points = _power_points
-	experience = _experience
-	ammunition = _ammunition
+	ammunition = _max_ammunition
 	max_ammunition = _max_ammunition
 	selected_weapon = _selected_weapon
 
 
 func take_damage(amount: float) -> void:
-	health = max(health - amount, MIN_HEALTH)
+	health = max(health - amount, 0)
 
 
 func _update_all_ui_elements() -> void:
@@ -126,6 +114,14 @@ func _update_all_ui_elements() -> void:
 	health_bar.value = health
 	power_points_label.text = str(power_points)
 	experience_label.text = str(experience)
-	ammunition_label.text = str(ammunition)
-	max_ammunition_label.text = str(max_ammunition)
 	selected_weapon_label.text = selected_weapon
+	_update_ammunition()
+	
+func _update_ammunition() -> void:
+	if ammunition_label:
+		ammunition_label.text = str(ammunition) + "/" + str(max_ammunition)
+		
+
+
+func _ready() -> void:
+	_update_all_ui_elements()

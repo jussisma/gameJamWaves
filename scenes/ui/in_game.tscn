@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cpxvnmu2prhse"]
 
-[ext_resource type="Script" uid="uid://d0bcadwk4pgcw" path="res://in_game.gd" id="1_dqat4"]
-[ext_resource type="Texture2D" uid="uid://dueohcohekhw3" path="res://icon.svg" id="2_e1d6j"]
+[ext_resource type="Script" uid="uid://k17rmrh3w58h" path="res://scripts/ui/in_game.gd" id="1_dqat4"]
+[ext_resource type="Texture2D" uid="uid://0abpff6ewoyg" path="res://icon.svg" id="2_e1d6j"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_6sd77"]
 font_size = 20
@@ -86,13 +86,6 @@ offset_top = -59.0
 offset_right = 144.0
 grow_vertical = 0
 
-[node name="PowerPointsLabel" type="Label" parent="BottomLeft"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 10
-text = "Power points 0"
-label_settings = SubResource("LabelSettings_6sd77")
-
 [node name="ProgressBarBox" type="HBoxContainer" parent="BottomLeft"]
 layout_mode = 2
 theme_override_constants/separation = 8
@@ -108,45 +101,69 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 
-[node name="BottomRight" type="HBoxContainer" parent="."]
+[node name="PowerPoints" type="HBoxContainer" parent="BottomLeft"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+
+[node name="Label" type="Label" parent="BottomLeft/PowerPoints"]
+layout_mode = 2
+text = "Power points "
+label_settings = SubResource("LabelSettings_6sd77")
+
+[node name="PowerPointsLabel" type="Label" parent="BottomLeft/PowerPoints"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+text = "0"
+label_settings = SubResource("LabelSettings_6sd77")
+
+[node name="BottomRight" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -44.0
-offset_top = -40.0
+offset_left = -194.0
+offset_top = -60.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="AmmunitionLabel" type="Label" parent="BottomRight"]
+[node name="WeaponImage" type="TextureRect" parent="BottomRight"]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 10
-text = "0"
-label_settings = SubResource("LabelSettings_6sd77")
-
-[node name="MaxAmmunitionLabel" type="Label" parent="BottomRight"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 10
-text = "0"
-label_settings = SubResource("LabelSettings_6sd77")
+texture = ExtResource("2_e1d6j")
 
 [node name="SelectedWeaponLabel" type="Label" parent="BottomRight"]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 10
-text = "0"
+size_flags_horizontal = 4
+text = "gun name"
 label_settings = SubResource("LabelSettings_6sd77")
 
-[node name="ExperienceLabel" type="Label" parent="."]
+[node name="AmmunitionLabel" type="Label" parent="BottomRight"]
 unique_name_in_owner = true
-layout_mode = 0
-offset_top = 6.0
-offset_right = 53.0
-offset_bottom = 34.0
+layout_mode = 2
+size_flags_horizontal = 4
+text = "amu/max"
+label_settings = SubResource("LabelSettings_6sd77")
+
+[node name="Experience" type="HBoxContainer" parent="."]
+layout_mode = 1
+offset_right = 86.0
+offset_bottom = 40.0
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+
+[node name="Label" type="Label" parent="Experience"]
+layout_mode = 2
+text = "EXP"
+label_settings = SubResource("LabelSettings_6sd77")
+
+[node name="ExperienceLabel" type="Label" parent="Experience"]
+unique_name_in_owner = true
+layout_mode = 2
 size_flags_horizontal = 10
-text = "EXP 0"
+text = "0"
 label_settings = SubResource("LabelSettings_6sd77")
