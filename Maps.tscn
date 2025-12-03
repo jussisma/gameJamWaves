@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=4 uid="uid://btf3bbxjdist"]
+[gd_scene load_steps=6 format=4 uid="uid://btf3bbxjdist"]
 
 [ext_resource type="TileSet" uid="uid://i3efm74wxfiw" path="res://Sci_fi_Tileset.tres" id="1_0jkm5"]
 [ext_resource type="Texture2D" uid="uid://yg2e7sr78jeo" path="res://Light.tres" id="2_ld5ut"]
+[ext_resource type="PackedScene" uid="uid://n7uj0tl1h8xp" path="res://main.tscn" id="3_ld5ut"]
 
 [sub_resource type="Gradient" id="Gradient_74u2i"]
 offsets = PackedFloat32Array(0, 0.2580645, 0.5645161, 1)
@@ -60,3 +61,5 @@ position = Vector2(252, 629)
 scale = Vector2(1.9687496, 2.2187498)
 color = Color(0, 0.6, 0, 1)
 texture = SubResource("GradientTexture2D_6c7kk")
+
+[node name="Node2D" parent="." instance=ExtResource("3_ld5ut")]
