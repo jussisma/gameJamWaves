@@ -1,11 +1,10 @@
 extends Control
 
+# Import des données d'armes
+const WeaponsData = preload("res://data/weapons_data.gd")
+
 # Signals
 signal die
-
-# Constants
-const DEFAULT_MAX_HEALTH: float = 500.0
-const DEFAULT_WEAPON: String = "pistol"
 
 # UI References
 @onready var world_label: Label = %WorldLabel
@@ -19,38 +18,44 @@ const DEFAULT_WEAPON: String = "pistol"
 @onready var weapon_image: TextureRect = %WeaponImage
 
 # Game State Variables
-var world: int = 0:
+var world: int:
 	set(value):
 		world = value
 		if world_label:
 			world_label.text = str(world)
 
-var level: int = 0:
+var level: int:
 	set(value):
 		level = value
 		if level_label:
 			level_label.text = str(level)
 
-var run: int = 0:
+var run: int:
 	set(value):
 		run = value
 		if run_label:
 			run_label.text = str(run)
 
 # Player Stats
-var power_points: int = 0:
+var power_points: int:
 	set(value):
 		power_points = value
 		if power_points_label:
 			power_points_label.text = str(power_points)
 
-var experience: int = 0:
+var experience: int:
 	set(value):
 		experience = value
 		if experience_label:
 			experience_label.text = str(experience)
 
-var health: float = DEFAULT_MAX_HEALTH:
+var max_health: float:
+	set(value):
+		max_health = value
+		if health_bar:
+			health_bar.max_value = max_health
+
+var health: float:
 	set(value):
 		var was_alive: bool = health > 0
 		health = value
@@ -59,69 +64,98 @@ var health: float = DEFAULT_MAX_HEALTH:
 		if was_alive and health <= 0:
 			die.emit()
 
-var max_health: float = DEFAULT_MAX_HEALTH:
-	set(value):
-		max_health = value
-		if health_bar:
-			health_bar.max_value = max_health
-
 # Weapon Stats
-var selected_weapon: String = DEFAULT_WEAPON:
+var weapons: Array = []  # [{name, ammo, max_ammo, image}]
+var current_weapon_index: int:
 	set(value):
-		selected_weapon = value
-		if selected_weapon_label:
-			selected_weapon_label.text = selected_weapon
-		# TODO if weapon_image:
-			#weapon_image.image = 
-
-var ammunition: int = 0:
-	set(value):
-		ammunition = value
-		_update_ammunition()
-
-var max_ammunition: int = 0:
-	set(value):
-		max_ammunition = value
-		_update_ammunition()
+		if value >= 0 and value < weapons.size():
+			current_weapon_index = value
+			_update_weapon_ui()
 
 
-func init_ui(
-	_world: int,
-	_level: int,
-	_run: int,
-	_max_health: float,
-	_max_ammunition: int,
-	_selected_weapon: String) -> void:
+### Initialize the UI
+func init_ui(_world: int, _level: int, _run: int, _max_health: float, _weapons_equipped: Array[String]) -> void:
 	world = _world
 	level = _level
 	run = _run
-	health = _max_health
+	power_points = 0
+	experience = 0
 	max_health = _max_health
-	ammunition = _max_ammunition
-	max_ammunition = _max_ammunition
-	selected_weapon = _selected_weapon
+	health = _max_health
+	current_weapon_index = 0
+
+	# Initialize the weapons
+	weapons.clear()
+	for weapon_name in _weapons_equipped:
+		if WeaponsData.WEAPONS.has(weapon_name):
+			var weapon_data = WeaponsData.WEAPONS[weapon_name]
+			weapons.append({
+				"name": weapon_name,
+				"ammo": weapon_data["max_ammo"],
+				"max_ammo": weapon_data["max_ammo"],
+				"image": weapon_data["image"]
+			})
 
 
-func take_damage(amount: float) -> void:
+### Setters
+func add_power_points() -> void:
+	power_points += 1
+
+func add_experience(amount: int) -> void:
+	experience += amount
+
+func add_health(amount: float) -> void:
+	health = min(health + amount, max_health)
+
+func lose_health(amount: float) -> void:
 	health = max(health - amount, 0)
 
+func add_ammunition(amount: int) -> void:
+	if current_weapon_index < weapons.size():
+		var weapon = weapons[current_weapon_index]
+		weapon["ammo"] = min(weapon["ammo"] + amount, weapon["max_ammo"])
+		_update_weapon_ui()
 
-func _update_all_ui_elements() -> void:
-	world_label.text = str(world)
-	level_label.text = str(level)
-	run_label.text = str(run)
-	health_bar.max_value = max_health
-	health_bar.value = health
-	power_points_label.text = str(power_points)
-	experience_label.text = str(experience)
-	selected_weapon_label.text = selected_weapon
-	_update_ammunition()
-	
-func _update_ammunition() -> void:
+func lose_ammunition() -> void:
+	if current_weapon_index < weapons.size():
+		var weapon = weapons[current_weapon_index]
+		weapon["ammo"] = max(weapon["ammo"] - 1, 0)
+		_update_weapon_ui()
+
+func select_weapon_by_index(index: int) -> void:
+	current_weapon_index = index
+
+
+### Getters
+func get_current_weapon() -> Dictionary:
+	return weapons[current_weapon_index]["name"]
+
+func get_current_weapon_ammo() -> int:
+	return weapons[current_weapon_index]["ammo"]
+
+func get_power_points() -> int:
+	return power_points
+
+func get_experience() -> int:
+	return experience
+
+func get_health() -> float:
+	return health
+
+
+### Update the weapon UI
+func _update_weapon_ui() -> void:
+	if current_weapon_index >= weapons.size():
+		return
+
+	var weapon = weapons[current_weapon_index]
+
+	if selected_weapon_label:
+		selected_weapon_label.text = weapon["name"]
+
+	if weapon_image:
+		var image_path = "res://guns/%s" % weapon["image"]
+		weapon_image.texture = load(image_path) if ResourceLoader.exists(image_path) else null
+
 	if ammunition_label:
-		ammunition_label.text = str(ammunition) + "/" + str(max_ammunition)
-		
-
-
-func _ready() -> void:
-	_update_all_ui_elements()
+		ammunition_label.text = "%d/%d" % [weapon["ammo"], weapon["max_ammo"]]

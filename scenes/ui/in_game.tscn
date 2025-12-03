@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cpxvnmu2prhse"]
+[gd_scene load_steps=5 format=3 uid="uid://cpxvnmu2prhse"]
 
 [ext_resource type="Script" uid="uid://k17rmrh3w58h" path="res://scripts/ui/in_game.gd" id="1_dqat4"]
 [ext_resource type="Texture2D" uid="uid://0abpff6ewoyg" path="res://icon.svg" id="2_e1d6j"]
+[ext_resource type="Texture2D" uid="uid://cu0va75x6kfu4" path="res://guns/AK47.png" id="3_lqdyl"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_6sd77"]
 font_size = 20
@@ -133,7 +134,8 @@ grow_vertical = 0
 [node name="WeaponImage" type="TextureRect" parent="BottomRight"]
 unique_name_in_owner = true
 layout_mode = 2
-texture = ExtResource("2_e1d6j")
+texture = ExtResource("3_lqdyl")
+stretch_mode = 5
 
 [node name="SelectedWeaponLabel" type="Label" parent="BottomRight"]
 unique_name_in_owner = true
