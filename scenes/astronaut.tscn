@@ -1,0 +1,619 @@
+[gd_scene load_steps=134 format=3 uid="uid://bml3lwe0ijbcs"]
+
+[ext_resource type="Script" uid="uid://q2qgu3b62s0v" path="res://scripts/astronaut.gd" id="1_4ka33"]
+[ext_resource type="Texture2D" uid="uid://88w6nrlhovj5" path="res://assets/Characters/Astronaut/animations/fight-stance-idle-8-frames/south/frame_000.png" id="1_ftqfi"]
+[ext_resource type="Texture2D" uid="uid://cw3rbvkrudc7t" path="res://assets/Characters/Astronaut/animations/fight-stance-idle-8-frames/south/frame_001.png" id="2_4ka33"]
+[ext_resource type="PackedScene" uid="uid://by8127rkd7gpw" path="res://scenes/bullet.tscn" id="2_sbosw"]
+[ext_resource type="Texture2D" uid="uid://v3usfo2dqco2" path="res://assets/Characters/Astronaut/animations/fight-stance-idle-8-frames/south/frame_002.png" id="3_sbosw"]
+[ext_resource type="Texture2D" uid="uid://cwgah3mi5plju" path="res://assets/Characters/Astronaut/animations/fight-stance-idle-8-frames/south/frame_003.png" id="4_534no"]
+[ext_resource type="Texture2D" uid="uid://c7tvn8c0tpqrx" path="res://assets/Characters/Astronaut/animations/fight-stance-idle-8-frames/south/frame_004.png" id="5_3pvbc"]
+[ext_resource type="Texture2D" uid="uid://b5odwydfyc077" path="res://assets/Characters/Astronaut/animations/fight-stance-idle-8-frames/south/frame_005.png" id="6_yd1uc"]
+[ext_resource type="Texture2D" uid="uid://b0h73jy6qkiq6" path="res://assets/Characters/Astronaut/animations/fight-stance-idle-8-frames/south/frame_006.png" id="7_scmea"]
+[ext_resource type="Texture2D" uid="uid://6vjdc62ml7i3" path="res://assets/Characters/Astronaut/animations/fight-stance-idle-8-frames/south/frame_007.png" id="8_23pk5"]
+[ext_resource type="Texture2D" uid="uid://d2bqwbyc1nda0" path="res://assets/Characters/Astronaut/animations/fight-stance-idle-8-frames/south-west/frame_000.png" id="9_tvkib"]
+[ext_resource type="Texture2D" uid="uid://do3gd387aihif" path="res://assets/Characters/Astronaut/animations/fight-stance-idle-8-frames/south-west/frame_001.png" id="10_o1wc5"]
+[ext_resource type="Texture2D" uid="uid://dx7m27rd238hn" path="res://assets/Characters/Astronaut/animations/fight-stance-idle-8-frames/south-west/frame_002.png" id="11_r1y5k"]
+[ext_resource type="Texture2D" uid="uid://b36ucdi8olkcx" path="res://assets/Characters/Astronaut/animations/fight-stance-idle-8-frames/south-west/frame_003.png" id="12_xbns5"]
+[ext_resource type="Texture2D" uid="uid://c8ns8yrif288d" path="res://assets/Characters/Astronaut/animations/fight-stance-idle-8-frames/south-west/frame_004.png" id="13_60h88"]
+[ext_resource type="Texture2D" uid="uid://bho7j8080n8nl" path="res://assets/Characters/Astronaut/animations/fight-stance-idle-8-frames/south-west/frame_005.png" id="14_netnc"]
+[ext_resource type="Texture2D" uid="uid://da0bby3j1mdkr" path="res://assets/Characters/Astronaut/animations/fight-stance-idle-8-frames/south-west/frame_006.png" id="15_w6rad"]
+[ext_resource type="Texture2D" uid="uid://muj4jsp3iijl" path="res://assets/Characters/Astronaut/animations/fight-stance-idle-8-frames/south-west/frame_007.png" id="16_s5ud4"]
+[ext_resource type="Texture2D" uid="uid://bcn82upmu48lf" path="res://assets/Characters/Astronaut/animations/fight-stance-idle-8-frames/south-east/frame_000.png" id="17_3rtfn"]
+[ext_resource type="Texture2D" uid="uid://bxxmwyl327vhb" path="res://assets/Characters/Astronaut/animations/fight-stance-idle-8-frames/south-east/frame_001.png" id="18_a384m"]
+[ext_resource type="Texture2D" uid="uid://bn5m0nmqc3tm0" path="res://assets/Characters/Astronaut/animations/fight-stance-idle-8-frames/south-east/frame_002.png" id="19_3s6sg"]
+[ext_resource type="Texture2D" uid="uid://dn5u5btpfio6a" path="res://assets/Characters/Astronaut/animations/fight-stance-idle-8-frames/south-east/frame_003.png" id="20_mmihp"]
+[ext_resource type="Texture2D" uid="uid://kr2qvo3360dh" path="res://assets/Characters/Astronaut/animations/fight-stance-idle-8-frames/south-east/frame_004.png" id="21_jjnno"]
+[ext_resource type="Texture2D" uid="uid://yfhe1npauuom" path="res://assets/Characters/Astronaut/animations/fight-stance-idle-8-frames/south-east/frame_005.png" id="22_u7uuw"]
+[ext_resource type="Texture2D" uid="uid://cq0ihall0b74h" path="res://assets/Characters/Astronaut/animations/fight-stance-idle-8-frames/south-east/frame_006.png" id="23_coy74"]
+[ext_resource type="Texture2D" uid="uid://bd85ef2kn2e7d" path="res://assets/Characters/Astronaut/animations/fight-stance-idle-8-frames/south-east/frame_007.png" id="24_fxv4f"]
+[ext_resource type="Texture2D" uid="uid://dk7tpbjunh1oq" path="res://assets/Characters/Astronaut/animations/fight-stance-idle-8-frames/west/frame_000.png" id="25_e4ugv"]
+[ext_resource type="Texture2D" uid="uid://cvwxle1bgnmwi" path="res://assets/Characters/Astronaut/animations/fight-stance-idle-8-frames/west/frame_001.png" id="26_m67b3"]
+[ext_resource type="Texture2D" uid="uid://ccwgkvjb6pw1e" path="res://assets/Characters/Astronaut/animations/fight-stance-idle-8-frames/west/frame_002.png" id="27_bxhln"]
+[ext_resource type="Texture2D" uid="uid://cflt3mcq53csi" path="res://assets/Characters/Astronaut/animations/fight-stance-idle-8-frames/west/frame_003.png" id="28_5ejws"]
+[ext_resource type="Texture2D" uid="uid://cq2fm5envxskn" path="res://assets/Characters/Astronaut/animations/fight-stance-idle-8-frames/west/frame_004.png" id="29_p5g4n"]
+[ext_resource type="Texture2D" uid="uid://5igvrbesitst" path="res://assets/Characters/Astronaut/animations/fight-stance-idle-8-frames/west/frame_005.png" id="30_cpcaj"]
+[ext_resource type="Texture2D" uid="uid://dj7fb22pn6rqn" path="res://assets/Characters/Astronaut/animations/fight-stance-idle-8-frames/west/frame_006.png" id="31_evq4h"]
+[ext_resource type="Texture2D" uid="uid://cu8uf47e3go6p" path="res://assets/Characters/Astronaut/animations/fight-stance-idle-8-frames/west/frame_007.png" id="32_njdj6"]
+[ext_resource type="Texture2D" uid="uid://b12yqtmerd8ct" path="res://assets/Characters/Astronaut/animations/fight-stance-idle-8-frames/east/frame_000.png" id="33_d8ma7"]
+[ext_resource type="Texture2D" uid="uid://bx45i8ab4sy4o" path="res://assets/Characters/Astronaut/animations/fight-stance-idle-8-frames/east/frame_001.png" id="34_8qqv5"]
+[ext_resource type="Texture2D" uid="uid://cq4oa5x1gl7i" path="res://assets/Characters/Astronaut/animations/fight-stance-idle-8-frames/east/frame_002.png" id="35_o3tk7"]
+[ext_resource type="Texture2D" uid="uid://c8i8yatvrlq2y" path="res://assets/Characters/Astronaut/animations/fight-stance-idle-8-frames/east/frame_003.png" id="36_135tn"]
+[ext_resource type="Texture2D" uid="uid://cgw0g8c4glr3g" path="res://assets/Characters/Astronaut/animations/fight-stance-idle-8-frames/east/frame_004.png" id="37_ayvk1"]
+[ext_resource type="Texture2D" uid="uid://yvqh1q4yjdn7" path="res://assets/Characters/Astronaut/animations/fight-stance-idle-8-frames/east/frame_005.png" id="38_dtfwn"]
+[ext_resource type="Texture2D" uid="uid://doklcprdvce5l" path="res://assets/Characters/Astronaut/animations/fight-stance-idle-8-frames/east/frame_006.png" id="39_yfmgu"]
+[ext_resource type="Texture2D" uid="uid://b1gkqny1fvdv2" path="res://assets/Characters/Astronaut/animations/fight-stance-idle-8-frames/east/frame_007.png" id="40_viky3"]
+[ext_resource type="Texture2D" uid="uid://o85tgjexri2v" path="res://assets/Characters/Astronaut/animations/fight-stance-idle-8-frames/north/frame_000.png" id="41_os4kt"]
+[ext_resource type="Texture2D" uid="uid://ikykgaof6dhv" path="res://assets/Characters/Astronaut/animations/fight-stance-idle-8-frames/north/frame_001.png" id="42_gtori"]
+[ext_resource type="Texture2D" uid="uid://ysp0iu8m5exp" path="res://assets/Characters/Astronaut/animations/fight-stance-idle-8-frames/north/frame_002.png" id="43_s6jn7"]
+[ext_resource type="Texture2D" uid="uid://bn7wfiknftx77" path="res://assets/Characters/Astronaut/animations/fight-stance-idle-8-frames/north/frame_003.png" id="44_20wmo"]
+[ext_resource type="Texture2D" uid="uid://dq1nqx1ntb45n" path="res://assets/Characters/Astronaut/animations/fight-stance-idle-8-frames/north/frame_004.png" id="45_icsfe"]
+[ext_resource type="Texture2D" uid="uid://cvlcbc48n2st1" path="res://assets/Characters/Astronaut/animations/fight-stance-idle-8-frames/north/frame_005.png" id="46_s4wi8"]
+[ext_resource type="Texture2D" uid="uid://brys5ydhtif2" path="res://assets/Characters/Astronaut/animations/fight-stance-idle-8-frames/north/frame_006.png" id="47_elg4l"]
+[ext_resource type="Texture2D" uid="uid://cqxghfx5jx04i" path="res://assets/Characters/Astronaut/animations/fight-stance-idle-8-frames/north/frame_007.png" id="48_w8j2f"]
+[ext_resource type="Texture2D" uid="uid://dav2rhpvwsfsd" path="res://assets/Characters/Astronaut/animations/fight-stance-idle-8-frames/north-west/frame_000.png" id="49_j2yv6"]
+[ext_resource type="Texture2D" uid="uid://dxg6lsxlacels" path="res://assets/Characters/Astronaut/animations/fight-stance-idle-8-frames/north-west/frame_001.png" id="50_otqfr"]
+[ext_resource type="Texture2D" uid="uid://daacewdc2pc4t" path="res://assets/Characters/Astronaut/animations/fight-stance-idle-8-frames/north-west/frame_002.png" id="51_bdd21"]
+[ext_resource type="Texture2D" uid="uid://dwm14ta475ucf" path="res://assets/Characters/Astronaut/animations/fight-stance-idle-8-frames/north-west/frame_003.png" id="52_b51gt"]
+[ext_resource type="Texture2D" uid="uid://6uahowvdubmk" path="res://assets/Characters/Astronaut/animations/fight-stance-idle-8-frames/north-west/frame_004.png" id="53_64gvu"]
+[ext_resource type="Texture2D" uid="uid://bccrbwjvm3ky7" path="res://assets/Characters/Astronaut/animations/fight-stance-idle-8-frames/north-west/frame_005.png" id="54_lf7kg"]
+[ext_resource type="Texture2D" uid="uid://cng4wtclggr3a" path="res://assets/Characters/Astronaut/animations/fight-stance-idle-8-frames/north-west/frame_006.png" id="55_ijeei"]
+[ext_resource type="Texture2D" uid="uid://f8bkpfjgbyi2" path="res://assets/Characters/Astronaut/animations/fight-stance-idle-8-frames/north-west/frame_007.png" id="56_x87xe"]
+[ext_resource type="Texture2D" uid="uid://dsc2uldv5o5nv" path="res://assets/Characters/Astronaut/animations/fight-stance-idle-8-frames/north-east/frame_000.png" id="57_w1pco"]
+[ext_resource type="Texture2D" uid="uid://d2ois2heo7rk7" path="res://assets/Characters/Astronaut/animations/fight-stance-idle-8-frames/north-east/frame_001.png" id="58_d77vc"]
+[ext_resource type="Texture2D" uid="uid://dlo711okpocme" path="res://assets/Characters/Astronaut/animations/fight-stance-idle-8-frames/north-east/frame_002.png" id="59_tyvys"]
+[ext_resource type="Texture2D" uid="uid://cok4a11dboiff" path="res://assets/Characters/Astronaut/animations/fight-stance-idle-8-frames/north-east/frame_003.png" id="60_7gxv3"]
+[ext_resource type="Texture2D" uid="uid://4dtxja8ri5tj" path="res://assets/Characters/Astronaut/animations/fight-stance-idle-8-frames/north-east/frame_004.png" id="61_pleei"]
+[ext_resource type="Texture2D" uid="uid://cql210oqrkhx4" path="res://assets/Characters/Astronaut/animations/fight-stance-idle-8-frames/north-east/frame_005.png" id="62_hxas7"]
+[ext_resource type="Texture2D" uid="uid://bfqh4lm2k8akk" path="res://assets/Characters/Astronaut/animations/fight-stance-idle-8-frames/north-east/frame_006.png" id="63_uc3hm"]
+[ext_resource type="Texture2D" uid="uid://blybd8daj2wjv" path="res://assets/Characters/Astronaut/animations/fight-stance-idle-8-frames/north-east/frame_007.png" id="64_qc2ku"]
+[ext_resource type="Texture2D" uid="uid://dr4k8ehc0weny" path="res://assets/Characters/Astronaut/animations/running-8-frames/south/frame_000.png" id="65_26fti"]
+[ext_resource type="Texture2D" uid="uid://df4nlbvbruknl" path="res://assets/Characters/Astronaut/animations/running-8-frames/south/frame_001.png" id="66_wnb6b"]
+[ext_resource type="Texture2D" uid="uid://cru5xjq04qq8" path="res://assets/Characters/Astronaut/animations/running-8-frames/south/frame_002.png" id="67_t72dw"]
+[ext_resource type="Texture2D" uid="uid://blvuk1lpmaood" path="res://assets/Characters/Astronaut/animations/running-8-frames/south/frame_003.png" id="68_18eby"]
+[ext_resource type="Texture2D" uid="uid://b85vthfko8xvb" path="res://assets/Characters/Astronaut/animations/running-8-frames/south/frame_004.png" id="69_y15kl"]
+[ext_resource type="Texture2D" uid="uid://7ftayw4lh8ti" path="res://assets/Characters/Astronaut/animations/running-8-frames/south/frame_005.png" id="70_imxe7"]
+[ext_resource type="Texture2D" uid="uid://c6t2sngrxenwu" path="res://assets/Characters/Astronaut/animations/running-8-frames/south/frame_006.png" id="71_ohnbw"]
+[ext_resource type="Texture2D" uid="uid://bmgbjhh8xgo13" path="res://assets/Characters/Astronaut/animations/running-8-frames/south/frame_007.png" id="72_76pyo"]
+[ext_resource type="Texture2D" uid="uid://c2ifsryxsbfwb" path="res://assets/Characters/Astronaut/animations/running-8-frames/south-west/frame_000.png" id="73_ea8cd"]
+[ext_resource type="Texture2D" uid="uid://bka6s1q7550hf" path="res://assets/Characters/Astronaut/animations/running-8-frames/south-west/frame_001.png" id="74_x0cox"]
+[ext_resource type="Texture2D" uid="uid://diqkk6482wiwq" path="res://assets/Characters/Astronaut/animations/running-8-frames/south-west/frame_002.png" id="75_wlntw"]
+[ext_resource type="Texture2D" uid="uid://dpdq0tv4sygrl" path="res://assets/Characters/Astronaut/animations/running-8-frames/south-west/frame_003.png" id="76_q1sqj"]
+[ext_resource type="Texture2D" uid="uid://cb836f8gump3r" path="res://assets/Characters/Astronaut/animations/running-8-frames/south-west/frame_004.png" id="77_xakga"]
+[ext_resource type="Texture2D" uid="uid://oh2x8xrpa4a0" path="res://assets/Characters/Astronaut/animations/running-8-frames/south-west/frame_005.png" id="78_0gpaa"]
+[ext_resource type="Texture2D" uid="uid://dtqdux7ahe13s" path="res://assets/Characters/Astronaut/animations/running-8-frames/south-west/frame_006.png" id="79_vxf5x"]
+[ext_resource type="Texture2D" uid="uid://d18anhjtklioy" path="res://assets/Characters/Astronaut/animations/running-8-frames/south-west/frame_007.png" id="80_sf8ky"]
+[ext_resource type="Texture2D" uid="uid://bckeorhpx3kg5" path="res://assets/Characters/Astronaut/animations/running-8-frames/south-east/frame_000.png" id="81_wk4m0"]
+[ext_resource type="Texture2D" uid="uid://22ctdg8o6vuq" path="res://assets/Characters/Astronaut/animations/running-8-frames/south-east/frame_001.png" id="82_7wyib"]
+[ext_resource type="Texture2D" uid="uid://dbr25lptn0b25" path="res://assets/Characters/Astronaut/animations/running-8-frames/south-east/frame_002.png" id="83_atkad"]
+[ext_resource type="Texture2D" uid="uid://cf5qe6brerxfe" path="res://assets/Characters/Astronaut/animations/running-8-frames/south-east/frame_003.png" id="84_b4ltx"]
+[ext_resource type="Texture2D" uid="uid://c17alquvlpuqc" path="res://assets/Characters/Astronaut/animations/running-8-frames/south-east/frame_004.png" id="85_p88r8"]
+[ext_resource type="Texture2D" uid="uid://bl4bh2bgr4u6o" path="res://assets/Characters/Astronaut/animations/running-8-frames/south-east/frame_005.png" id="86_0dq3c"]
+[ext_resource type="Texture2D" uid="uid://cw6hjteplkiy2" path="res://assets/Characters/Astronaut/animations/running-8-frames/south-east/frame_006.png" id="87_n8lh4"]
+[ext_resource type="Texture2D" uid="uid://xyqsqqsvwhgf" path="res://assets/Characters/Astronaut/animations/running-8-frames/south-east/frame_007.png" id="88_5erao"]
+[ext_resource type="Texture2D" uid="uid://c1jf82i6hjn5r" path="res://assets/Characters/Astronaut/animations/running-8-frames/west/frame_000.png" id="89_chdt7"]
+[ext_resource type="Texture2D" uid="uid://dbl1b2enp7ib2" path="res://assets/Characters/Astronaut/animations/running-8-frames/west/frame_001.png" id="90_uy7fg"]
+[ext_resource type="Texture2D" uid="uid://cm7vcpk10sy8" path="res://assets/Characters/Astronaut/animations/running-8-frames/west/frame_002.png" id="91_80crb"]
+[ext_resource type="Texture2D" uid="uid://c5otjlyejhtdo" path="res://assets/Characters/Astronaut/animations/running-8-frames/west/frame_003.png" id="92_0o3vm"]
+[ext_resource type="Texture2D" uid="uid://du3ydonteg0mt" path="res://assets/Characters/Astronaut/animations/running-8-frames/west/frame_004.png" id="93_ut1lt"]
+[ext_resource type="Texture2D" uid="uid://87grpbx61cfd" path="res://assets/Characters/Astronaut/animations/running-8-frames/west/frame_005.png" id="94_lwwys"]
+[ext_resource type="Texture2D" uid="uid://dgkwx6ko1fr57" path="res://assets/Characters/Astronaut/animations/running-8-frames/west/frame_006.png" id="95_ewg0v"]
+[ext_resource type="Texture2D" uid="uid://b72sejqa4aj8o" path="res://assets/Characters/Astronaut/animations/running-8-frames/west/frame_007.png" id="96_ppm6s"]
+[ext_resource type="Texture2D" uid="uid://bqvpsnrqpes4q" path="res://assets/Characters/Astronaut/animations/running-8-frames/east/frame_000.png" id="97_v7jor"]
+[ext_resource type="Texture2D" uid="uid://100xrkmw0cf7" path="res://assets/Characters/Astronaut/animations/running-8-frames/east/frame_001.png" id="98_jr40r"]
+[ext_resource type="Texture2D" uid="uid://ddbr2bj2wb6bi" path="res://assets/Characters/Astronaut/animations/running-8-frames/east/frame_002.png" id="99_am52x"]
+[ext_resource type="Texture2D" uid="uid://chyqm0dxihwp8" path="res://assets/Characters/Astronaut/animations/running-8-frames/east/frame_003.png" id="100_y1r5l"]
+[ext_resource type="Texture2D" uid="uid://d4equ6anp5dtj" path="res://assets/Characters/Astronaut/animations/running-8-frames/east/frame_004.png" id="101_6ko6g"]
+[ext_resource type="Texture2D" uid="uid://bg1x22wep23rt" path="res://assets/Characters/Astronaut/animations/running-8-frames/east/frame_005.png" id="102_yhsmr"]
+[ext_resource type="Texture2D" uid="uid://6ydlul8m6x2t" path="res://assets/Characters/Astronaut/animations/running-8-frames/east/frame_006.png" id="103_w54sq"]
+[ext_resource type="Texture2D" uid="uid://drbk8prhfscjv" path="res://assets/Characters/Astronaut/animations/running-8-frames/east/frame_007.png" id="104_2wsrv"]
+[ext_resource type="Texture2D" uid="uid://ccoy4rt7dkujr" path="res://assets/Characters/Astronaut/animations/running-8-frames/north/frame_000.png" id="105_cta31"]
+[ext_resource type="Texture2D" uid="uid://xkk4bdmc3p20" path="res://assets/Characters/Astronaut/animations/running-8-frames/north/frame_001.png" id="106_gmw4x"]
+[ext_resource type="Texture2D" uid="uid://dji4ag5x70x7j" path="res://assets/Characters/Astronaut/animations/running-8-frames/north/frame_002.png" id="107_he4p4"]
+[ext_resource type="Texture2D" uid="uid://dwpeyogkx0qew" path="res://assets/Characters/Astronaut/animations/running-8-frames/north/frame_003.png" id="108_0ldp3"]
+[ext_resource type="Texture2D" uid="uid://b81lx4mv2oifa" path="res://assets/Characters/Astronaut/animations/running-8-frames/north/frame_004.png" id="109_rhai6"]
+[ext_resource type="Texture2D" uid="uid://on4pire12x58" path="res://assets/Characters/Astronaut/animations/running-8-frames/north/frame_005.png" id="110_meadh"]
+[ext_resource type="Texture2D" uid="uid://cu7xwibv0s5m3" path="res://assets/Characters/Astronaut/animations/running-8-frames/north/frame_006.png" id="111_qd8m8"]
+[ext_resource type="Texture2D" uid="uid://b2s0mb47esbgt" path="res://assets/Characters/Astronaut/animations/running-8-frames/north/frame_007.png" id="112_okguh"]
+[ext_resource type="Texture2D" uid="uid://de7eixwo5w1i8" path="res://assets/Characters/Astronaut/animations/running-8-frames/north-west/frame_000.png" id="113_6q0w4"]
+[ext_resource type="Texture2D" uid="uid://byyf8icupmlt4" path="res://assets/Characters/Astronaut/animations/running-8-frames/north-west/frame_001.png" id="114_xoaob"]
+[ext_resource type="Texture2D" uid="uid://d0lmbaqbhxs70" path="res://assets/Characters/Astronaut/animations/running-8-frames/north-west/frame_002.png" id="115_ivh1s"]
+[ext_resource type="Texture2D" uid="uid://c36i0pp6b330c" path="res://assets/Characters/Astronaut/animations/running-8-frames/north-west/frame_003.png" id="116_fegcu"]
+[ext_resource type="Texture2D" uid="uid://bwh5la245c3xp" path="res://assets/Characters/Astronaut/animations/running-8-frames/north-west/frame_004.png" id="117_2an2n"]
+[ext_resource type="Texture2D" uid="uid://cjd6cxdd4ay8l" path="res://assets/Characters/Astronaut/animations/running-8-frames/north-west/frame_005.png" id="118_lwoa3"]
+[ext_resource type="Texture2D" uid="uid://dqnf1mh4uy8gf" path="res://assets/Characters/Astronaut/animations/running-8-frames/north-west/frame_006.png" id="119_luq0u"]
+[ext_resource type="Texture2D" uid="uid://hee3fl06jjc1" path="res://assets/Characters/Astronaut/animations/running-8-frames/north-west/frame_007.png" id="120_qtvt5"]
+[ext_resource type="Texture2D" uid="uid://frt7a7jajtke" path="res://assets/Characters/Astronaut/animations/running-8-frames/north-east/frame_000.png" id="121_wxcb0"]
+[ext_resource type="Texture2D" uid="uid://c0sd4ypeturxq" path="res://assets/Characters/Astronaut/animations/running-8-frames/north-east/frame_001.png" id="122_0m72e"]
+[ext_resource type="Texture2D" uid="uid://cktmj065w4l4n" path="res://assets/Characters/Astronaut/animations/running-8-frames/north-east/frame_002.png" id="123_ey5tb"]
+[ext_resource type="Texture2D" uid="uid://dng5h0bmk7gxx" path="res://assets/Characters/Astronaut/animations/running-8-frames/north-east/frame_003.png" id="124_0q8fb"]
+[ext_resource type="Texture2D" uid="uid://402tyup2ljhu" path="res://assets/Characters/Astronaut/animations/running-8-frames/north-east/frame_004.png" id="125_nv7xi"]
+[ext_resource type="Texture2D" uid="uid://crxf2tiot5eib" path="res://assets/Characters/Astronaut/animations/running-8-frames/north-east/frame_005.png" id="126_bwlh1"]
+[ext_resource type="Texture2D" uid="uid://c1xrcupm0v8xd" path="res://assets/Characters/Astronaut/animations/running-8-frames/north-east/frame_006.png" id="127_7glwi"]
+[ext_resource type="Texture2D" uid="uid://d3c5sfn1a2d8d" path="res://assets/Characters/Astronaut/animations/running-8-frames/north-east/frame_007.png" id="128_uwf88"]
+[ext_resource type="PackedScene" uid="uid://dljkk7grd4ejw" path="res://scenes/Teleport.tscn" id="131_534no"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ng8kf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ftqfi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_4ka33")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_sbosw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_534no")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_3pvbc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_yd1uc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_scmea")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_23pk5")
+}],
+"loop": true,
+"name": &"idle_down",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_tvkib")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_o1wc5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_r1y5k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_xbns5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_60h88")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_netnc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_w6rad")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_s5ud4")
+}],
+"loop": true,
+"name": &"idle_downLeft",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_3rtfn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_a384m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_3s6sg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_mmihp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_jjnno")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_u7uuw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_coy74")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_fxv4f")
+}],
+"loop": true,
+"name": &"idle_downRight",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("25_e4ugv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_m67b3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_bxhln")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_5ejws")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_p5g4n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_cpcaj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_evq4h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_njdj6")
+}],
+"loop": true,
+"name": &"idle_left",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("33_d8ma7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_8qqv5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_o3tk7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_135tn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_ayvk1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_dtfwn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_yfmgu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_viky3")
+}],
+"loop": true,
+"name": &"idle_right",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("41_os4kt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_gtori")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_s6jn7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_20wmo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_icsfe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_s4wi8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_elg4l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_w8j2f")
+}],
+"loop": true,
+"name": &"idle_up",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("49_j2yv6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_otqfr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_bdd21")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_b51gt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_64gvu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54_lf7kg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("55_ijeei")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56_x87xe")
+}],
+"loop": true,
+"name": &"idle_upLeft",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("57_w1pco")
+}, {
+"duration": 1.0,
+"texture": ExtResource("58_d77vc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("59_tyvys")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60_7gxv3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("61_pleei")
+}, {
+"duration": 1.0,
+"texture": ExtResource("62_hxas7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("63_uc3hm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("64_qc2ku")
+}],
+"loop": true,
+"name": &"idle_upRight",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("65_26fti")
+}, {
+"duration": 1.0,
+"texture": ExtResource("66_wnb6b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("67_t72dw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("68_18eby")
+}, {
+"duration": 1.0,
+"texture": ExtResource("69_y15kl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("70_imxe7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("71_ohnbw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("72_76pyo")
+}],
+"loop": true,
+"name": &"move_down",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("73_ea8cd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("74_x0cox")
+}, {
+"duration": 1.0,
+"texture": ExtResource("75_wlntw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("76_q1sqj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("77_xakga")
+}, {
+"duration": 1.0,
+"texture": ExtResource("78_0gpaa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("79_vxf5x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("80_sf8ky")
+}],
+"loop": true,
+"name": &"move_downLeft",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("81_wk4m0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("82_7wyib")
+}, {
+"duration": 1.0,
+"texture": ExtResource("83_atkad")
+}, {
+"duration": 1.0,
+"texture": ExtResource("84_b4ltx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("85_p88r8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("86_0dq3c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("87_n8lh4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("88_5erao")
+}],
+"loop": true,
+"name": &"move_downRight",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("89_chdt7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("90_uy7fg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("91_80crb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("92_0o3vm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("93_ut1lt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("94_lwwys")
+}, {
+"duration": 1.0,
+"texture": ExtResource("95_ewg0v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("96_ppm6s")
+}],
+"loop": true,
+"name": &"move_left",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("97_v7jor")
+}, {
+"duration": 1.0,
+"texture": ExtResource("98_jr40r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("99_am52x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("100_y1r5l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("101_6ko6g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("102_yhsmr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("103_w54sq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("104_2wsrv")
+}],
+"loop": true,
+"name": &"move_right",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("105_cta31")
+}, {
+"duration": 1.0,
+"texture": ExtResource("106_gmw4x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("107_he4p4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("108_0ldp3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("109_rhai6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("110_meadh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("111_qd8m8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("112_okguh")
+}],
+"loop": true,
+"name": &"move_up",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("113_6q0w4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("114_xoaob")
+}, {
+"duration": 1.0,
+"texture": ExtResource("115_ivh1s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("116_fegcu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("117_2an2n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("118_lwoa3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("119_luq0u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("120_qtvt5")
+}],
+"loop": true,
+"name": &"move_upLeft",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("121_wxcb0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("122_0m72e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("123_ey5tb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("124_0q8fb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("125_nv7xi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("126_bwlh1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("127_7glwi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("128_uwf88")
+}],
+"loop": true,
+"name": &"move_upRight",
+"speed": 8.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hfucl"]
+height = 42.0
+
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["player"]]
+script = ExtResource("1_4ka33")
+bullet_scene = ExtResource("2_sbosw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ng8kf")
+animation = &"idle_upLeft"
+frame = 2
+frame_progress = 0.0908635
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
+shape = SubResource("CapsuleShape2D_hfucl")
+
+[node name="Teleport" parent="." instance=ExtResource("131_534no")]

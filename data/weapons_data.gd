@@ -27,4 +27,3 @@ const WEAPONS: Dictionary = {
 		"image": "BazookaM20.png"
 	}
 }
-
