@@ -25,6 +25,10 @@ version_control/autoload_on_startup=true
 player=""
 enemy=""
 
+[global_group]
+
+wall=""
+
 [input]
 
 move_up={
