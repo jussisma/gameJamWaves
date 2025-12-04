@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjl4n4vbdq6yd"]
+
+[ext_resource type="Script" uid="uid://cymv4xgbvnjh" path="res://scripts/gravity_grenade.gd" id="1_cbh33"]
+[ext_resource type="Texture2D" uid="uid://3vsxjju2nbxu" path="res://assets/gravity_grenade.svg" id="1_da6vw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cbh33"]
+radius = 27.58623
+
+[node name="GravityGrenade" type="Area2D"]
+script = ExtResource("1_cbh33")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_cbh33")
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
+position = Vector2(-9.536743e-07, 1)
+scale = Vector2(0.9375, 0.96874994)
+texture = ExtResource("1_da6vw")

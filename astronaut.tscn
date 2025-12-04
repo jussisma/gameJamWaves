@@ -1,4 +1,4 @@
-[gd_scene load_steps=133 format=3 uid="uid://bml3lwe0ijbcs"]
+[gd_scene load_steps=134 format=3 uid="uid://bml3lwe0ijbcs"]
 
 [ext_resource type="Script" uid="uid://q2qgu3b62s0v" path="res://astronaut.gd" id="1_4ka33"]
 [ext_resource type="Texture2D" uid="uid://88w6nrlhovj5" path="res://Characters/Astronaut/animations/fight-stance-idle-8-frames/south/frame_000.png" id="1_ftqfi"]
@@ -130,6 +130,7 @@
 [ext_resource type="Texture2D" uid="uid://trodmti2uclu" path="res://Characters/Astronaut/animations/running-8-frames/north-east/frame_005.png" id="126_bwlh1"]
 [ext_resource type="Texture2D" uid="uid://ctgyuvlanar7h" path="res://Characters/Astronaut/animations/running-8-frames/north-east/frame_006.png" id="127_7glwi"]
 [ext_resource type="Texture2D" uid="uid://dwvu1akew5s7r" path="res://Characters/Astronaut/animations/running-8-frames/north-east/frame_007.png" id="128_uwf88"]
+[ext_resource type="PackedScene" uid="uid://dljkk7grd4ejw" path="res://scenes/Teleport.tscn" id="131_534no"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ng8kf"]
 animations = [{
@@ -614,3 +615,5 @@ frame_progress = 0.0908635
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 0)
 shape = SubResource("CapsuleShape2D_hfucl")
+
+[node name="Teleport" parent="." instance=ExtResource("131_534no")]
