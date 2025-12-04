@@ -1,16 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://n7uj0tl1h8xp"]
+[gd_scene load_steps=2 format=3 uid="uid://n7uj0tl1h8xp"]
 
-[ext_resource type="Script" uid="uid://c6ij8nsx8wcw4" path="res://scripts/main.gd" id="1_h2yge"]
-[ext_resource type="PackedScene" uid="uid://bml3lwe0ijbcs" path="res://scenes/astronaut.tscn" id="1_ig7tw"]
-[ext_resource type="PackedScene" uid="uid://cpxvnmu2prhse" path="res://scenes/ui_in_game.tscn" id="2_0xm2m"]
+[ext_resource type="Script" uid="uid://7ygflhkn7fqq" path="res://scripts/main.gd" id="1_h2yge"]
 
-[node name="Game" type="Node2D"]
+[node name="Start Game" type="Node2D"]
 script = ExtResource("1_h2yge")
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("1_ig7tw")]
-
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
-
-[node name="UIinGame" parent="." instance=ExtResource("2_0xm2m")]
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
 offset_right = 1152.0
 offset_bottom = 648.0
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -15.5
+offset_right = 28.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "START"
+
+[connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]
