@@ -18,3 +18,5 @@ func _on_body_entered(body: Node2D) -> void:
 	if(body.is_in_group("enemy")):
 		body.take_damage(50)
 		queue_free()
+	if(body.is_in_group("wall")):
+		queue_free()
