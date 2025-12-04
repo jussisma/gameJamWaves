@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=4 uid="uid://btf3bbxjdist"]
+[gd_scene load_steps=7 format=4 uid="uid://btf3bbxjdist"]
 
 [ext_resource type="TileSet" uid="uid://i3efm74wxfiw" path="res://Sci_fi_Tileset.tres" id="1_0jkm5"]
 [ext_resource type="Texture2D" uid="uid://yg2e7sr78jeo" path="res://Light.tres" id="2_ld5ut"]
 [ext_resource type="PackedScene" uid="uid://n7uj0tl1h8xp" path="res://main.tscn" id="3_ld5ut"]
+[ext_resource type="PackedScene" uid="uid://crkl0nt8rm4iw" path="res://scenes/GravityPillar.tscn" id="4_74u2i"]
 
 [sub_resource type="Gradient" id="Gradient_74u2i"]
 offsets = PackedFloat32Array(0, 0.2580645, 0.5645161, 1)
@@ -63,3 +64,6 @@ color = Color(0, 0.6, 0, 1)
 texture = SubResource("GradientTexture2D_6c7kk")
 
 [node name="Node2D" parent="." instance=ExtResource("3_ld5ut")]
+
+[node name="GravityPillar" parent="." instance=ExtResource("4_74u2i")]
+position = Vector2(288, 361)

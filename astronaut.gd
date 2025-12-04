@@ -1,16 +1,27 @@
 extends Entity
 
 # Referencias para configurar en el Inspector
-@export var bullet_scene: PackedScene  # <--- Arrastra aquí tu escena de la Bala (.tscn)
-@export var bullet_offset: float = 15.0 # <--- Ajusta esto para alejar la bala del cuerpo
+@export var bullet_scene: PackedScene  
+const GRENADE_SCENE = preload("res://scenes/GravityGrenade.tscn") 
+@export var bullet_offset: float = 15.0 
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var teleport: Node2D = $Teleport
+@export var pillar_scene: PackedScene = preload("res://scenes/GravityPillar.tscn")
 
 var speed: float = 200.0
 var last_direction: Vector2 = Vector2(0, 1)
+var is_movement_locked: bool = false
+
+func _ready() -> void:
+	if teleport:
+		teleport.teleport_started.connect(_on_teleport_started)
+		teleport.teleport_finished.connect(_on_teleport_finished)
 
 func _physics_process(delta: float) -> void:
-	# 1. MOVIMIENTO
+	if is_movement_locked:
+		return
+		
 	var input_vector = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	
 	if input_vector != Vector2.ZERO:
@@ -20,30 +31,38 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity = Vector2.ZERO
 		play_animation("idle", last_direction)
-
-	move_and_slide()
 	
-	# 2. DISPARO
+	move_and_slide() 
+	
+	if Input.is_action_just_pressed("gravity_grenade"):
+		throw_gravity_grenade()	
+
 	if Input.is_action_just_pressed("shoot"):
 		shoot()
+	
+	if Input.is_action_just_pressed("place_pillar"):
+		place_gravity_pillar()	
 
 func shoot() -> void:
 	if bullet_scene == null:
+		print("Błąd: Nie przypisano bullet_scene w Inspektorze gracza!")
 		return
 
 	var bullet = bullet_scene.instantiate()
 	
-	# 1. POSICIÓN
-	# La colocamos delante del personaje
 	bullet.global_position = global_position + (last_direction * bullet_offset)
-	
-	# 2. ROTACIÓN (¡Aquí está el cambio!)
-	# Obtenemos el ángulo del movimiento.
-	# Como tu sprite mira hacia ARRIBA, le sumamos 90 grados (PI/2) para compensar.
+
 	bullet.rotation = last_direction.angle() + deg_to_rad(90)
 	
-	# 3. INSTANCIAR
 	get_parent().add_child(bullet)
+
+func throw_gravity_grenade():
+	var grenade = GRENADE_SCENE.instantiate()
+	
+	get_parent().add_child(grenade)
+	
+	grenade.setup(global_position, get_global_mouse_position())		
+	
 
 func play_animation(action: String, dir_vector: Vector2) -> void:
 	var dir = dir_vector.round()
@@ -66,3 +85,22 @@ func play_animation(action: String, dir_vector: Vector2) -> void:
 			anim_name = "left"
 			
 	sprite.play(action + "_" + anim_name)
+	
+func _on_teleport_started() -> void:
+	is_movement_locked = true
+
+func _on_teleport_finished() -> void:
+	is_movement_locked = false
+	
+func place_gravity_pillar() -> void:
+	if pillar_scene == null:
+		print("Błąd: Nie przypisano pillar_scene w Inspektorze!")
+		return
+		
+	var pillar = pillar_scene.instantiate()
+	#pillar.global_position = global_position
+	
+
+	pillar.global_position = global_position + (last_direction * 60.0)
+	
+	get_parent().add_child(pillar)	
