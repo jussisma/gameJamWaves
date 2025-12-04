@@ -2,9 +2,9 @@ extends Area2D
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
-const PROJECTILE_SCENE = preload("res://bullet.tscn")
+const PROJECTILE_SCENE = preload("res://scenes/bullet.tscn")
 
-var can_split: bool = true 
+var can_split: bool = true
 var speed: float = 400.0
 
 func _process(delta: float) -> void:
