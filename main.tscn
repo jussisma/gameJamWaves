@@ -3,7 +3,7 @@
 [ext_resource type="TileSet" uid="uid://i3efm74wxfiw" path="res://Sci_fi_Tileset.tres" id="1_0jkm5"]
 [ext_resource type="Texture2D" uid="uid://yg2e7sr78jeo" path="res://Light.tres" id="2_ld5ut"]
 [ext_resource type="Script" uid="uid://boyou3byg33dc" path="res://red_light.gd" id="3_74u2i"]
-[ext_resource type="PackedScene" uid="uid://n7uj0tl1h8xp" path="res://main.tscn" id="3_ld5ut"]
+[ext_resource type="PackedScene" uid="uid://n7uj0tl1h8xp" path="res://Character.tscn" id="3_ld5ut"]
 [ext_resource type="Script" uid="uid://dstmg5pa7g58m" path="res://Light.gd" id="4_6c7kk"]
 
 [sub_resource type="Gradient" id="Gradient_74u2i"]
