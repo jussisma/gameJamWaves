@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=4 uid="uid://btf3bbxjdist"]
+[gd_scene load_steps=8 format=4 uid="uid://btf3bbxjdist"]
 
 [ext_resource type="TileSet" uid="uid://i3efm74wxfiw" path="res://tilesets/Sci_fi_Tileset.tres" id="1_0jkm5"]
+[ext_resource type="PackedScene" uid="uid://bml3lwe0ijbcs" path="res://scenes/astronaut.tscn" id="1_ho0kc"]
 [ext_resource type="Texture2D" uid="uid://yg2e7sr78jeo" path="res://materials/Light.tres" id="2_ld5ut"]
 [ext_resource type="PackedScene" uid="uid://n7uj0tl1h8xp" path="res://scenes/main.tscn" id="3_ld5ut"]
 [ext_resource type="PackedScene" uid="uid://crkl0nt8rm4iw" path="res://scenes/GravityPillar.tscn" id="4_74u2i"]
@@ -67,3 +68,7 @@ texture = SubResource("GradientTexture2D_6c7kk")
 
 [node name="GravityPillar" parent="." instance=ExtResource("4_74u2i")]
 position = Vector2(288, 361)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_ho0kc")]
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
