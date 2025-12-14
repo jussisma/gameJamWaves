@@ -10,9 +10,9 @@ enum Tipo { AMMO, EXP, HEALTH, POWER, MONEY }
 @onready var animated_sprite = $AnimatedSprite2D
 
 func _ready():
-	actualizar_animacion()
+	update_animation()
 
-func actualizar_animacion():
+func update_animation():
 	# Convierte el ENUM a string minúscula (ej: Tipo.AMMO -> "ammo")
 	var nombre_animacion = Tipo.keys()[tipo_actual].to_lower()
 	
@@ -25,10 +25,10 @@ func _on_body_entered(body):
 	# Verificamos si es el jugador. 
 	# Asegúrate de que tu nodo Player esté en el grupo "player"
 	if body.is_in_group("player"):
-		aplicar_efecto_autoload()
+		apply_effect()
 		queue_free()
 
-func aplicar_efecto_autoload():
+func apply_effect():
 	match tipo_actual:
 		Tipo.MONEY:
 			GameManager.money += cantidad
@@ -59,6 +59,6 @@ func aplicar_efecto_autoload():
 			print("Munición añadida al arma actual")
 
 # Función útil para tus spawners/cofres
-func aleatorizar_tipo():
+func  randomize_type():
 	tipo_actual = Tipo.values().pick_random()
-	actualizar_animacion()
+	update_animation()
