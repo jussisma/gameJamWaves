@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ShopItemData" load_steps=3 format=3 uid="uid://b4jy7c646qwa2"]
+
+[ext_resource type="Script" uid="uid://eoyxksdg7apm" path="res://data/shop_item_data.gd" id="1_curi6"]
+[ext_resource type="Texture2D" uid="uid://cna8yq2x2gr3m" path="res://assets/shop/icon_armor.svg" id="1_thhqu"]
+
+[resource]
+script = ExtResource("1_curi6")
+id = "item_04"
+name = "Void Armor Plates"
+description = "Forged from titanium alloy and salvaged alien ship debris. Heavy, but they save lives.
+
+Effect: Increases MAX Health by +50 points."
+price = 500
+icon = ExtResource("1_thhqu")
+metadata/_custom_type_script = "uid://eoyxksdg7apm"

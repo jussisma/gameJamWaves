@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ShopItemData" load_steps=3 format=3 uid="uid://ckrnaaxxpqch3"]
+
+[ext_resource type="Script" uid="uid://eoyxksdg7apm" path="res://data/shop_item_data.gd" id="1_6p7s3"]
+[ext_resource type="Texture2D" uid="uid://dxy3i1k8a0ejb" path="res://assets/shop/icon_rifle.svg" id="1_43i46"]
+
+[resource]
+script = ExtResource("1_6p7s3")
+id = "item_03"
+name = "Particle Accelerator"
+description = "An illegal module that overclocks the weapon's output. It overheats the barrel but shreds enemy armor like paper.
+
+Effect: Increases damage dealt by 20%."
+price = 500
+icon = ExtResource("1_43i46")
+metadata/_custom_type_script = "uid://eoyxksdg7apm"

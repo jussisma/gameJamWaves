@@ -1,0 +1,161 @@
+[gd_scene load_steps=17 format=3 uid="uid://dff3khn5sn0fb"]
+
+[ext_resource type="Texture2D" uid="uid://cxmajnbvsqq1m" path="res://assets/shop/shop_detailed_bg.svg" id="1_lfa7d"]
+[ext_resource type="Script" uid="uid://cc7eiwgvurfp7" path="res://scripts/cosmic_shop.gd" id="1_ngi34"]
+[ext_resource type="Texture2D" uid="uid://bpg7hwekticpm" path="res://assets/shop/cyborg_idle_1.svg" id="2_ngi34"]
+[ext_resource type="Texture2D" uid="uid://cu7t2xrfw1ntr" path="res://assets/shop/cyborg_idle_2.svg" id="3_2on2m"]
+[ext_resource type="Resource" uid="uid://b3kltqwih7rp7" path="res://resources/Ammo.tres" id="3_11y56"]
+[ext_resource type="Texture2D" uid="uid://7ji5nna2ch1y" path="res://assets/shop/cyborg_idle_3.svg" id="4_5dln2"]
+[ext_resource type="Resource" uid="uid://b4jy7c646qwa2" path="res://resources/Armor.tres" id="4_lb0oe"]
+[ext_resource type="Resource" uid="uid://b58r8vvi4rtve" path="res://resources/Elixir.tres" id="5_baj15"]
+[ext_resource type="Texture2D" uid="uid://dmcvnbtqc6tgf" path="res://assets/shop/shop_counter.svg" id="5_hd6kb"]
+[ext_resource type="Resource" uid="uid://dsr33o56pfqvj" path="res://resources/Medkit.tres" id="6_uk7v8"]
+[ext_resource type="PackedScene" uid="uid://c7n7c77j51isg" path="res://scenes/ShopSlot.tscn" id="7_2on2m"]
+[ext_resource type="Resource" uid="uid://bpmi6asx10kmv" path="res://resources/WormHole.tres" id="7_26w4w"]
+[ext_resource type="Resource" uid="uid://ckrnaaxxpqch3" path="res://resources/RifleUpgrade.tres" id="8_ci38e"]
+[ext_resource type="Resource" uid="uid://bsfuk3re302ty" path="res://resources/Magnet.tres" id="14_lb0oe"]
+[ext_resource type="Resource" uid="uid://cqx2rkqc8p1h2" path="res://resources/Overlocker.tres" id="15_baj15"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w86gj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ngi34")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_2on2m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_5dln2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ngi34")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 3.0
+}]
+
+[node name="CosmicShop" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ngi34")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_lfa7d")
+
+[node name="Merchant" type="AnimatedSprite2D" parent="."]
+position = Vector2(618, 325)
+scale = Vector2(0.96166664, 0.80285716)
+sprite_frames = SubResource("SpriteFrames_w86gj")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CounterOverlay" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -24.0
+offset_top = 47.0
+offset_right = 1256.0
+offset_bottom = 767.0
+texture = ExtResource("5_hd6kb")
+
+[node name="SlotsContainer" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ShopSlot" parent="SlotsContainer" instance=ExtResource("7_2on2m")]
+layout_mode = 0
+offset_left = 1128.0
+offset_top = 448.0
+offset_right = 1256.0
+offset_bottom = 576.0
+item_data = ExtResource("3_11y56")
+
+[node name="ShopSlot2" parent="SlotsContainer" instance=ExtResource("7_2on2m")]
+layout_mode = 0
+offset_left = 1131.0
+offset_top = 148.0
+offset_right = 1259.0
+offset_bottom = 276.0
+item_data = ExtResource("4_lb0oe")
+
+[node name="ShopSlot3" parent="SlotsContainer" instance=ExtResource("7_2on2m")]
+layout_mode = 0
+offset_left = 49.000008
+offset_top = 151.0
+offset_right = 177.00003
+offset_bottom = 279.0
+item_data = ExtResource("5_baj15")
+
+[node name="ShopSlot4" parent="SlotsContainer" instance=ExtResource("7_2on2m")]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 354.0
+offset_right = 178.00002
+offset_bottom = 482.0
+item_data = ExtResource("6_uk7v8")
+
+[node name="ShopSlot5" parent="SlotsContainer" instance=ExtResource("7_2on2m")]
+layout_mode = 0
+offset_left = 51.00006
+offset_top = 455.0
+offset_right = 179.00006
+offset_bottom = 583.0
+item_data = ExtResource("7_26w4w")
+
+[node name="ShopSlot6" parent="SlotsContainer" instance=ExtResource("7_2on2m")]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 253.0
+offset_right = 178.00003
+offset_bottom = 381.0
+item_data = ExtResource("8_ci38e")
+
+[node name="ShopSlot7" parent="SlotsContainer" instance=ExtResource("7_2on2m")]
+layout_mode = 0
+offset_left = 1128.9999
+offset_top = 343.99997
+offset_right = 1256.9999
+offset_bottom = 471.99997
+item_data = ExtResource("14_lb0oe")
+
+[node name="ShopSlot8" parent="SlotsContainer" instance=ExtResource("7_2on2m")]
+layout_mode = 0
+offset_left = 1128.9999
+offset_top = 246.99998
+offset_right = 1256.9999
+offset_bottom = 375.0
+item_data = ExtResource("15_baj15")
+
+[node name="InfoPanel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MarginContainer" type="MarginContainer" parent="InfoPanel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InfoPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="InfoPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="InfoPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="DescLabel" type="Label" parent="InfoPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="PriceLabel" type="Label" parent="InfoPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2

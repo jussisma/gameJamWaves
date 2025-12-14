@@ -1,0 +1,20 @@
+<svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="15" y="25" width="70" height="60" rx="10" fill="black" opacity="0.5"/>
+    
+    <rect x="10" y="20" width="80" height="60" rx="10" fill="#E0E0E0" stroke="#FFF" stroke-width="2"/>
+    <rect x="10" y="20" width="80" height="60" rx="10" fill="url(#metal_grad)" opacity="0.5"/>
+    
+    <path d="M10 30 H90 V70 H10 Z" fill="#F5F5F5"/>
+    <rect x="35" y="10" width="30" height="15" rx="2" fill="#333" stroke="#555" stroke-width="2"/> <circle cx="50" cy="50" r="18" fill="#111" stroke="#333" stroke-width="2"/>
+    <path d="M45 38 H55 V45 H62 V55 H55 V62 H45 V55 H38 V45 H45 Z" fill="#00FF00">
+        <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/>
+    </path>
+    <circle cx="50" cy="50" r="10" fill="#00FF00" opacity="0.3" filter="blur(5px)"/>
+
+    <defs>
+        <linearGradient id="metal_grad" x1="0" y1="0" x2="100" y2="100">
+            <stop stop-color="#FFFFFF" stop-opacity="0.8"/>
+            <stop offset="1" stop-color="#999999" stop-opacity="0.5"/>
+        </linearGradient>
+    </defs>
+</svg>
