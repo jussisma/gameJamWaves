@@ -13,3 +13,11 @@ func _input(event: InputEvent) -> void:
 				GameGlobals.weapons_equipped[0]["max_ammo"] = 100
 				# Remplir les munitions au maximum
 				GameGlobals.weapons_equipped[0]["ammo"] = 100
+				# Si la touche O est pressée, diminuer la vie
+		if event.physical_keycode == KEY_O:
+			print("lose 10")
+			GameGlobals.health -= 10.3  # ou la valeur que tu veux enlever
+		# Si la touche P est pressée, augmenter la vie
+		elif event.physical_keycode == KEY_P:
+			print("win 10")
+			GameGlobals.health += 5.7  # ou la valeur que tu veux ajouter

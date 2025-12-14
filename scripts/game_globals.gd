@@ -11,8 +11,10 @@ var run: int = 1
 # Player Stats
 var power_points: int = 0
 var experience: int = 0
-var max_health: float = 100.0
-var health: float = 100.0
+var max_health: float = 0.0
+var health: float:
+	set(value):
+		health = clamp(value, 0.0, max_health)
 
 # Weapon Data
 var weapons_data: Dictionary = {}
