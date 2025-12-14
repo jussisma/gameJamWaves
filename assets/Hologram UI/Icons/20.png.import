@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1tpro6f238ab"
-path="res://.godot/imported/SubmachineMP5A3.png-b4fea293e640c6c73e6dc5504f260ed3.ctex"
+uid="uid://covmeylv3d776"
+path="res://.godot/imported/20.png-5182dfbf12484c132d7eb8b01b32c846.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://guns/SubmachineMP5A3.png"
-dest_files=["res://.godot/imported/SubmachineMP5A3.png-b4fea293e640c6c73e6dc5504f260ed3.ctex"]
+source_file="res://assets/Hologram UI/Icons/20.png"
+dest_files=["res://.godot/imported/20.png-5182dfbf12484c132d7eb8b01b32c846.ctex"]
 
 [params]
 
