@@ -23,6 +23,22 @@ func _process(_delta: float) -> void:
 	_refresh_ui()
 
 
+# Input handling
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed:
+		_handle_weapon_selection(event)
+
+
+func _handle_weapon_selection(event: InputEventKey) -> void:
+	var weapon_index = -1
+	if event.physical_keycode >= KEY_1 and event.physical_keycode <= KEY_9:
+		weapon_index = event.physical_keycode - KEY_1
+	elif event.physical_keycode >= KEY_KP_1 and event.physical_keycode <= KEY_KP_9:
+		weapon_index = event.physical_keycode - KEY_KP_1
+	if weapon_index >= 0 and weapon_index < GameGlobals.weapons_equipped.size():
+		GameGlobals.select_weapon_by_index(weapon_index)
+
+
 # Met à jour toute l'interface depuis GameGlobals
 func _refresh_ui() -> void:
 	# Informations de progression
