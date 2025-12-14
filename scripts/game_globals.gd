@@ -13,6 +13,8 @@ var power_points: int = 0
 var experience: int = 0
 var max_health: float = 100.0
 var health: float = 100.0
+var money: int = 0
+var ammo: int = 0
 
 # Weapon Data
 var weapons_data: Dictionary = {}
