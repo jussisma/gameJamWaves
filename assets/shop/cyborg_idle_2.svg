@@ -1,0 +1,40 @@
+<svg width="600" height="700" viewBox="0 0 600 700" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="alien_skin" x1="300" y1="0" x2="300" y2="300" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#8899AA"/>
+            <stop offset="1" stop-color="#445566"/>
+        </linearGradient>
+        <radialGradient id="void_eye" cx="0.5" cy="0.5" r="0.5">
+            <stop offset="0.7" stop-color="#000000"/>
+            <stop offset="1" stop-color="#220033"/>
+        </radialGradient>
+        <linearGradient id="jacket_grad" x1="100" y1="300" x2="500" y2="700" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#3A2A20"/>
+            <stop offset="1" stop-color="#1A1005"/>
+        </linearGradient>
+    </defs>
+
+    <path d="M115 695 L155 295 L195 245 H405 L445 295 L485 695 H115Z" fill="url(#jacket_grad)" stroke="#111" stroke-width="2"/>
+    <path d="M155 295 L195 245 L215 345 M445 295 L405 245 L385 345" stroke="#532" stroke-width="4"/>
+    <rect x="250" y="395" width="100" height="150" fill="#221111" opacity="0.3"/>
+
+    <rect x="230" y="235" width="140" height="60" rx="10" fill="#111" stroke="#333" stroke-width="3"/>
+    <circle cx="260" cy="265" r="15" fill="#00FF00" opacity="0.4"/> <path d="M290 245 V285 M310 245 V285 M330 245 V285" stroke="#444" stroke-width="3"/>
+
+    <g id="head" transform="translate(0, 5) scale(1.02)">
+        <path d="M295 30 C235 30 175 100 195 200 C205 240 255 280 295 280 C335 280 385 240 395 200 C415 100 355 30 295 30" fill="url(#alien_skin)"/>
+        
+        <path d="M215 180 C205 150 225 120 255 130 C275 140 265 190 245 200 C225 210 215 180 215 180" fill="url(#void_eye)"/>
+        <circle cx="250" cy="145" r="5" fill="white" opacity="0.9"/> <path d="M375 180 C385 150 365 120 335 130 C315 140 325 190 345 200 C365 210 375 180 375 180" fill="url(#void_eye)"/>
+        <circle cx="340" cy="145" r="5" fill="white" opacity="0.9"/>
+
+        <path d="M285 220 L290 205 M305 220 L300 205" stroke="#334455" stroke-width="2"/>
+        <path d="M275 250 Q295 258 315 250" stroke="#334455" stroke-width="2"/> </g>
+
+    <g transform="translate(0, 45)">
+        <path d="M115 350 Q75 450 95 600" stroke="#778899" stroke-width="30"/>
+        <path d="M485 350 Q525 450 505 600" stroke="#778899" stroke-width="30"/>
+        <ellipse cx="135" cy="580" rx="30" ry="20" fill="#778899"/>
+        <ellipse cx="465" cy="580" rx="30" ry="20" fill="#778899"/>
+    </g>
+</svg>
