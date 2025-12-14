@@ -1,24 +1,25 @@
-[gd_scene load_steps=5 format=3 uid="uid://cpxvnmu2prhse"]
+[gd_scene load_steps=4 format=3 uid="uid://cpxvnmu2prhse"]
 
-[ext_resource type="Script" uid="uid://k17rmrh3w58h" path="res://scripts/ui_in_game.gd" id="1_dqat4"]
-[ext_resource type="Texture2D" uid="uid://rtjhwigcrr1e" path="res://assets/icon.svg" id="2_e1d6j"]
-[ext_resource type="Texture2D" uid="uid://cu0va75x6kfu4" path="res://assets/guns/AK47.png" id="3_lqdyl"]
+[ext_resource type="Script" uid="uid://k17rmrh3w58h" path="res://scripts/Playing_Interface.gd" id="1_mgkp0"]
+[ext_resource type="Texture2D" uid="uid://rtjhwigcrr1e" path="res://assets/icon.svg" id="2_qw5h6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_6sd77"]
 font_size = 20
 shadow_color = Color(0, 0, 0, 0.5568628)
 
-[node name="UIinGame" type="Control"]
-z_index = 1000
+[node name="Playing_Interface" type="CanvasLayer"]
+layer = 100
+
+[node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_dqat4")
+script = ExtResource("1_mgkp0")
 
-[node name="UpRight" type="VBoxContainer" parent="."]
+[node name="UpRight" type="VBoxContainer" parent="Control"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -27,58 +28,58 @@ offset_left = -86.0
 offset_bottom = 92.0
 grow_horizontal = 0
 
-[node name="WorldBox" type="HBoxContainer" parent="UpRight"]
+[node name="WorldBox" type="HBoxContainer" parent="Control/UpRight"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 16
 
-[node name="Label" type="Label" parent="UpRight/WorldBox"]
+[node name="Label" type="Label" parent="Control/UpRight/WorldBox"]
 layout_mode = 2
 text = "World"
 label_settings = SubResource("LabelSettings_6sd77")
 
-[node name="WorldLabel" type="Label" parent="UpRight/WorldBox"]
+[node name="WorldLabel" type="Label" parent="Control/UpRight/WorldBox"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 10
 text = "0"
 label_settings = SubResource("LabelSettings_6sd77")
 
-[node name="LevelBox" type="HBoxContainer" parent="UpRight"]
+[node name="LevelBox" type="HBoxContainer" parent="Control/UpRight"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 16
 
-[node name="Label" type="Label" parent="UpRight/LevelBox"]
+[node name="Label" type="Label" parent="Control/UpRight/LevelBox"]
 layout_mode = 2
 text = "Level"
 label_settings = SubResource("LabelSettings_6sd77")
 
-[node name="LevelLabel" type="Label" parent="UpRight/LevelBox"]
+[node name="LevelLabel" type="Label" parent="Control/UpRight/LevelBox"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 10
 text = "0"
 label_settings = SubResource("LabelSettings_6sd77")
 
-[node name="RunBox" type="HBoxContainer" parent="UpRight"]
+[node name="RunBox" type="HBoxContainer" parent="Control/UpRight"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 16
 
-[node name="Label" type="Label" parent="UpRight/RunBox"]
+[node name="Label" type="Label" parent="Control/UpRight/RunBox"]
 layout_mode = 2
 text = "Run"
 label_settings = SubResource("LabelSettings_6sd77")
 
-[node name="RunLabel" type="Label" parent="UpRight/RunBox"]
+[node name="RunLabel" type="Label" parent="Control/UpRight/RunBox"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 10
 text = "0"
 label_settings = SubResource("LabelSettings_6sd77")
 
-[node name="BottomLeft" type="VBoxContainer" parent="."]
+[node name="BottomLeft" type="VBoxContainer" parent="Control"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -87,39 +88,39 @@ offset_top = -59.0
 offset_right = 144.0
 grow_vertical = 0
 
-[node name="ProgressBarBox" type="HBoxContainer" parent="BottomLeft"]
+[node name="ProgressBarBox" type="HBoxContainer" parent="Control/BottomLeft"]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="TextureRect" type="TextureRect" parent="BottomLeft/ProgressBarBox"]
+[node name="TextureRect" type="TextureRect" parent="Control/BottomLeft/ProgressBarBox"]
 layout_mode = 2
-texture = ExtResource("2_e1d6j")
+texture = ExtResource("2_qw5h6")
 expand_mode = 2
 
-[node name="HealthBar" type="ProgressBar" parent="BottomLeft/ProgressBarBox"]
+[node name="HealthBar" type="ProgressBar" parent="Control/BottomLeft/ProgressBarBox"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 
-[node name="PowerPoints" type="HBoxContainer" parent="BottomLeft"]
+[node name="PowerPoints" type="HBoxContainer" parent="Control/BottomLeft"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 16
 
-[node name="Label" type="Label" parent="BottomLeft/PowerPoints"]
+[node name="Label" type="Label" parent="Control/BottomLeft/PowerPoints"]
 layout_mode = 2
 text = "Power points "
 label_settings = SubResource("LabelSettings_6sd77")
 
-[node name="PowerPointsLabel" type="Label" parent="BottomLeft/PowerPoints"]
+[node name="PowerPointsLabel" type="Label" parent="Control/BottomLeft/PowerPoints"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 10
 text = "0"
 label_settings = SubResource("LabelSettings_6sd77")
 
-[node name="BottomRight" type="VBoxContainer" parent="."]
+[node name="BottomRight" type="VBoxContainer" parent="Control"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -131,39 +132,39 @@ offset_top = -60.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="WeaponImage" type="TextureRect" parent="BottomRight"]
+[node name="WeaponImage" type="TextureRect" parent="Control/BottomRight"]
 unique_name_in_owner = true
 layout_mode = 2
-texture = ExtResource("3_lqdyl")
+texture = ExtResource("2_qw5h6")
 stretch_mode = 5
 
-[node name="SelectedWeaponLabel" type="Label" parent="BottomRight"]
+[node name="SelectedWeaponLabel" type="Label" parent="Control/BottomRight"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 text = "gun name"
 label_settings = SubResource("LabelSettings_6sd77")
 
-[node name="AmmunitionLabel" type="Label" parent="BottomRight"]
+[node name="AmmunitionLabel" type="Label" parent="Control/BottomRight"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 text = "amu/max"
 label_settings = SubResource("LabelSettings_6sd77")
 
-[node name="Experience" type="HBoxContainer" parent="."]
+[node name="Experience" type="HBoxContainer" parent="Control"]
 layout_mode = 1
 offset_right = 86.0
 offset_bottom = 40.0
 size_flags_vertical = 3
 theme_override_constants/separation = 16
 
-[node name="Label" type="Label" parent="Experience"]
+[node name="Label" type="Label" parent="Control/Experience"]
 layout_mode = 2
 text = "EXP"
 label_settings = SubResource("LabelSettings_6sd77")
 
-[node name="ExperienceLabel" type="Label" parent="Experience"]
+[node name="ExperienceLabel" type="Label" parent="Control/Experience"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 10
