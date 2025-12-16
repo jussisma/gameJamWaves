@@ -15,6 +15,11 @@ var is_movement_locked: bool = false
 
 func _ready() -> void:
 	add_to_group("player")
+	
+	# Sync health with GameGlobals at start
+	current_health = int(GameGlobals.max_health)
+	max_health = int(GameGlobals.max_health)
+	
 	if teleport:
 		teleport.teleport_started.connect(_on_teleport_started)
 		teleport.teleport_finished.connect(_on_teleport_finished)
@@ -104,4 +109,9 @@ func place_gravity_pillar() -> void:
 
 	pillar.global_position = global_position + (last_direction * 60.0)
 	
-	get_parent().add_child(pillar)	
+	get_parent().add_child(pillar)
+
+# Override take_damage to sync with GameGlobals for UI
+func take_damage(amount: int) -> void:
+	super.take_damage(amount)
+	GameGlobals.health = current_health

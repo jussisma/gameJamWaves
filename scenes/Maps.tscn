@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://btf3bbxjdist"]
+[gd_scene load_steps=14 format=4 uid="uid://btf3bbxjdist"]
 
 [ext_resource type="Script" path="res://scripts/Run_Start.gd" id="1_1s6ju"]
 [ext_resource type="TileSet" uid="uid://i3efm74wxfiw" path="res://tilesets/Sci_fi_Tileset.tres" id="1_6c7kk"]
@@ -8,12 +8,13 @@
 [ext_resource type="PackedScene" uid="uid://2bld5pdcp7q2" path="res://scenes/BaseEnemy.tscn" id="2_oboxi"]
 [ext_resource type="Script" uid="uid://boyou3byg33dc" path="res://red_light.gd" id="3_jlul1"]
 [ext_resource type="Script" uid="uid://dstmg5pa7g58m" path="res://Light.gd" id="4_p0rfh"]
-[ext_resource type="PackedScene" uid="uid://n7uj0tl1h8xp" path="res://Character.tscn" id="5_i6bg4"]
+[ext_resource type="PackedScene" uid="uid://n7uj0tl1h8xp" path="res://scenes/main.tscn" id="5_i6bg4"]
+[ext_resource type="Script" uid="uid://o1t8fy1s8foa" path="res://scripts/enemies/wave_manager.gd" id="7_gb7hl"]
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_oboxi"]
-vertices = PackedVector2Array(-6.140625, 369.9375, -7.8515625, 488.9375, -571.2031, 486.04688, -573.77344, 367.04688)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-584, 357, 4, 360, 2, 499, -581, 496)])
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_gb7hl"]
+vertices = PackedVector2Array(392, 864.96875, 392, 896.85156, -76.78906, 890.1406, 3.8203125, 863.96875, 12.03125, 407.9922, -68.796875, 495, 11.25, 337.03125, -14, 60.921875, -15.8203125, -47.023438, 328.15625, -47.96875, 330.82813, 109, -14, 85.09375, -508, 109, -591.9219, 80.078125, -589.0625, 494.02344, -508, 131, -509.04688, 340.0625, -103.97656, 495, 17.296875, 352.17188, 25.273438, 374.89063, 111.50781, 349.78906, 94.07031, 376.02344, 113, 379.79688, 113.453125, 338.07813, 395, 340.89844, 395, 618.9297, 113, 617.0625)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 3, 2, 5, 6), PackedInt32Array(7, 8, 9, 10), PackedInt32Array(11, 7, 10), PackedInt32Array(11, 10, 12, 13), PackedInt32Array(14, 13, 12, 15, 16), PackedInt32Array(17, 14, 16, 6, 5), PackedInt32Array(4, 6, 18, 19), PackedInt32Array(19, 18, 20, 21), PackedInt32Array(22, 21, 20), PackedInt32Array(23, 24, 25, 26, 22), PackedInt32Array(22, 20, 23)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-602, 70, -599, 504, -104, 505, -79, 505, -87, 900, 402, 907, 402, 855, 14, 854, 22, 410, 32, 385, 93, 386, 103, 388, 103, 627, 405, 629, 405, 331, 105, 328, 103, 340, 24, 342, 18, 327, -499, 330, -498, 131, -498, 119, 341, 119, 338, -58, -26, -57, -24, 61, -24, 75)])
 
 [sub_resource type="Gradient" id="Gradient_74u2i"]
 offsets = PackedFloat32Array(0, 0.2580645, 0.5645161, 1)
@@ -24,23 +25,13 @@ gradient = SubResource("Gradient_74u2i")
 fill = 1
 fill_from = Vector2(0.517094, 0.10683761)
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_gb7hl"]
-vertices = PackedVector2Array(400, 863.9531, 400, 892.90625, -69.40625, 889.0703, -70.5625, 862.03906)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-81, 852, 38.948456, 852.48865, 410, 854, 410, 903, -79, 899)])
-
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_h5k3w"]
-vertices = PackedVector2Array(389, 607, 141.10938, 607, 143.89063, 354, 389, 354)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(134, 344, 399, 344, 399, 617, 131, 617)])
-
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_1s6ju")
 
 [node name="Playing_Interface" parent="." instance=ExtResource("1_ukjry")]
 
 [node name="HallWay2" type="NavigationRegion2D" parent="."]
-navigation_polygon = SubResource("NavigationPolygon_oboxi")
+navigation_polygon = SubResource("NavigationPolygon_gb7hl")
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="HallWay2" groups=["wall"]]
 tile_map_data = PackedByteArray("AAAPACIAAQApADgAAAAPACMAAQApADkAAAAPACQAAQApADoAAAAPACUAAQApADsAAAAQACIAAQAqADgAAAAQACMAAQAqADkAAAAQACQAAQAqADoAAAAQACUAAQAqADsAAADu/xgAAQAMACAAAADu/xkAAQAMACEAAADu/xoAAQAMACIAAADv/xgAAQANACAAAADv/xkAAQANACEAAADv/xoAAQANACIAAADw/xgAAQAOACAAAADw/xkAAQAOACEAAADw/xoAAQAOACIAAADx/xkAAQAPACEAAADx/xoAAQAPACIAAAD9/ygAAQAIACAAAAD9/ykAAQAIACEAAAD9/yoAAQAIACIAAAD9/ysAAQAIACMAAAD+/ygAAQAJACAAAAD+/ykAAQAJACEAAAD+/yoAAQAJACIAAAD+/ysAAQAJACMAAAD//ygAAQAKACAAAAD//ykAAQAKACEAAAD//yoAAQAKACIAAAD//ysAAQAKACMAAAAAACgAAQALACAAAAAAACkAAQALACEAAAAAACoAAQALACIAAAAAACsAAQALACMAAAD///3/AQABACEAAAD///7/AQABACIAAAAAAP3/AQACACEAAAAAAP7/AQACACIAAAACAAEAAQABACEAAAACAAIAAQABACIAAAADAAEAAQACACEAAAADAAIAAQACACIAAAAHAAIAAQABACEAAAAHAAMAAQABACIAAAAIAAIAAQACACEAAAAIAAMAAQACACIAAAA=")
@@ -94,44 +85,25 @@ scale = Vector2(1.9687496, 2.2187498)
 color = Color(0, 0.6, 0, 1)
 texture = SubResource("GradientTexture2D_6c7kk")
 
+[node name="WaveManager" type="Node2D" parent="."]
+script = ExtResource("7_gb7hl")
+
 [node name="Node2D" parent="." instance=ExtResource("5_i6bg4")]
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_ho0kc")]
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 
-[node name="Corridor2" type="NavigationRegion2D" parent="."]
-position = Vector2(-12, 8)
-navigation_polygon = SubResource("NavigationPolygon_gb7hl")
+[node name="SpawnPoints" type="Node2D" parent="." node_paths=PackedStringArray("spawn_points")]
+script = ExtResource("7_gb7hl")
+enemy_scene = ExtResource("2_oboxi")
+spawn_points = [NodePath("SpawnPoint1"), NodePath("SpawnPoint2"), NodePath("SpawnPoint3")]
 
-[node name="Corridor1" type="NavigationRegion2D" parent="."]
-position = Vector2(-473, -789)
-navigation_polygon = SubResource("NavigationPolygon_gb7hl")
+[node name="SpawnPoint1" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(-521, 451)
 
-[node name="Hallway2" type="NavigationRegion2D" parent="."]
-position = Vector2(-12, 8)
-navigation_polygon = SubResource("NavigationPolygon_h5k3w")
+[node name="SpawnPoint2" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(379, 881)
 
-[node name="BaseEnemy" parent="." instance=ExtResource("2_oboxi")]
-position = Vector2(-501, 80)
-
-[node name="BaseEnemy2" parent="." instance=ExtResource("2_oboxi")]
-position = Vector2(-38, 877)
-speed = 80.0
-attack_damage = 10
-attack_cooldown = 1.0
-max_health = 100
-
-[node name="BaseEnemy3" parent="." instance=ExtResource("2_oboxi")]
-position = Vector2(256, 436)
-speed = 80.0
-attack_damage = 10
-attack_cooldown = 1.0
-max_health = 100
-
-[node name="BaseEnemy4" parent="." instance=ExtResource("2_oboxi")]
-position = Vector2(-549, 426)
-speed = 80.0
-attack_damage = 10
-attack_cooldown = 1.0
-max_health = 100
+[node name="SpawnPoint3" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(262, 504)
