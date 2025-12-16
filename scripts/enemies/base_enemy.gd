@@ -1,10 +1,17 @@
 extends Entity
 
+# --- Variables de Loot ---
+# AJUSTA ESTA RUTA si tu escena no está en la raíz "res://"
+const LOOT_SCENE = preload("res://consumable.tscn") 
+@export_range(0.0, 1.0) var drop_chance: float = 0.5 # 50% de probabilidad de drop
+
+# --- Variables de Combate ---
 @export var speed: float = 80.0
 @export var attack_damage: int = 10
 @export var attack_cooldown: float = 1.0
 @export var attack_duration: float = 0.5
-@export var experience_reward: int = 10  # XP donnée au joueur à la mort 
+@export var experience_reward: int = 10 
+
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var attack_timer: Timer = $Timer
@@ -15,6 +22,9 @@ var player_in_hurtbox: Node2D = null
 var is_attacking: bool = false
 
 func _ready() -> void:
+	# Aseguramos la inicialización del padre Entity (vida, etc)
+	super._ready() 
+	
 	add_to_group("enemy")
 	attack_timer.wait_time = attack_cooldown
 	attack_timer.timeout.connect(func(): can_attack = true)
@@ -24,7 +34,7 @@ func _ready() -> void:
 	if players.size() > 0:
 		target = players[0]
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void: # _delta no se usa, lo marcamos con _
 	_deal_continuous_damage()
 	
 	if target == null or not is_instance_valid(target):
@@ -32,7 +42,7 @@ func _physics_process(delta: float) -> void:
 			_play_animation("idle")
 		return
 	
-	# Navigation towards the player
+	# Navegación hacia el jugador
 	nav_agent.target_position = target.global_position
 	
 	if not nav_agent.is_navigation_finished():
@@ -40,7 +50,7 @@ func _physics_process(delta: float) -> void:
 		var direction = global_position.direction_to(next_pos)
 		velocity = direction * speed
 		
-		# Flip the sprite
+		# Girar el sprite
 		if sprite:
 			sprite.flip_h = direction.x < 0
 		
@@ -53,11 +63,13 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 
-# Called by the HurtBox when the player enters it
+# Llamado cuando el jugador entra en la HurtBox
 func _deal_continuous_damage() -> void:
 	if player_in_hurtbox and is_instance_valid(player_in_hurtbox) and can_attack:
+		# Nota: Entity ya tiene take_damage, así que esto siempre funciona si es Entity
 		if player_in_hurtbox.has_method("take_damage"):
 			player_in_hurtbox.take_damage(attack_damage)
+		
 		can_attack = false
 		attack_timer.start()
 		if not is_attacking:  
@@ -68,7 +80,7 @@ func _on_hurt_box_body_entered(body: Node2D) -> void:
 		player_in_hurtbox = body
 
 func _on_hurt_box_body_exited(body: Node2D) -> void:
-	if body.is_in_group("player"):		
+	if body.is_in_group("player"):        
 		player_in_hurtbox = null
 
 func _play_attack_combo() -> void:
@@ -77,7 +89,7 @@ func _play_attack_combo() -> void:
 	
 	is_attacking = true
 	
-	# Play attack1
+	# Reproducir ataque
 	if sprite.sprite_frames.has_animation("attack1"):
 		sprite.play("attack1")
 		await get_tree().create_timer(attack_duration).timeout
@@ -90,11 +102,29 @@ func _play_animation(anim_name: String) -> void:
 		if sprite.animation != anim_name:
 			sprite.play(anim_name)
 
-# Override the die() function of Entity
+# --- FUNCIÓN DE MUERTE MODIFICADA ---
 func die() -> void:
-	# Give experience to the player
+	# 1. Dar experiencia (Usando GameGlobals como en tu script)
 	GameGlobals.experience += experience_reward
-	print("Enemy died! Player gained ", experience_reward, " XP. Total: ", GameGlobals.experience)
+	print("Enemy died! XP +", experience_reward)
 	
-	# Call the parent die() function
+	# 2. DROP DE CONSUMIBLE
+	# randf() devuelve un float entre 0.0 y 1.0
+	if randf() <= drop_chance:
+		spawn_loot()
+	
+	# 3. Llamar a la función die() del padre (Entity) que hace queue_free()
 	super.die()
+
+func spawn_loot() -> void:
+	if LOOT_SCENE:
+		var loot = LOOT_SCENE.instantiate()
+		loot.global_position = global_position
+		
+		# Llamamos a la función que creamos antes para que sea un tipo al azar
+		
+		loot.randomize_type()
+			
+		# Usamos call_deferred para añadirlo al padre de forma segura
+		# (Evita errores si se hace justo durante un cálculo de físicas)
+		get_parent().call_deferred("add_child", loot)

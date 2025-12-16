@@ -1,19 +1,19 @@
 extends Area2D
 
-# Definimos los tipos que coinciden con tus animaciones y lógica
 enum Tipo { AMMO, EXP, HEALTH, POWER, MONEY }
 
-# Variables configurables
 @export var tipo_actual: Tipo = Tipo.MONEY
 @export var cantidad: int = 10 
 
 @onready var animated_sprite = $AnimatedSprite2D
 
 func _ready():
+	# Cuando el objeto entra al juego, lee el tipo y pone la animación
 	update_animation()
 
 func update_animation():
-	# Convierte el ENUM a string minúscula (ej: Tipo.AMMO -> "ammo")
+	if not animated_sprite: return # Protección por si acaso
+	
 	var nombre_animacion = Tipo.keys()[tipo_actual].to_lower()
 	
 	if animated_sprite.sprite_frames.has_animation(nombre_animacion):
@@ -22,8 +22,6 @@ func update_animation():
 		push_warning("Falta la animación: " + nombre_animacion)
 
 func _on_body_entered(body):
-	# Verificamos si es el jugador. 
-	# Asegúrate de que tu nodo Player esté en el grupo "player"
 	if body.is_in_group("player"):
 		apply_effect()
 		queue_free()
@@ -31,34 +29,22 @@ func _on_body_entered(body):
 func apply_effect():
 	match tipo_actual:
 		Tipo.MONEY:
-			GameManager.money += cantidad
-			print("Dinero total: ", GameManager.money)
-			
+			GameGlobals.money += cantidad
+			# print("Dinero total: ", GameGlobals.money)
 		Tipo.EXP:
-			GameManager.experience += cantidad
-			print("XP total: ", GameManager.experience)
-			
+			GameGlobals.experience += cantidad
 		Tipo.POWER:
-			# Mapeado a tu variable 'power_points'
-			GameManager.power_points += cantidad
-			print("Poder total: ", GameManager.power_points)
-			
+			GameGlobals.power_points += cantidad
 		Tipo.HEALTH:
-			# Lógica para no superar la vida máxima definida en tu Autoload
-			if GameManager.health < GameManager.max_health:
-				GameManager.health += cantidad
-				# Nos aseguramos de no pasarnos del tope
-				if GameManager.health > GameManager.max_health:
-					GameManager.health = GameManager.max_health
-				print("Salud recuperada: ", GameManager.health)
-				
+			if GameGlobals.health < GameGlobals.max_health:
+				GameGlobals.health += cantidad
+				if GameGlobals.health > GameGlobals.max_health:
+					GameGlobals.health = GameGlobals.max_health
 		Tipo.AMMO:
-			# USAMOS TU FUNCIÓN para recargar el arma actual
-			# Así actualiza 'weapons_equipped' correctamente
-			GameManager.add_ammunition(cantidad)
-			print("Munición añadida al arma actual")
+			GameGlobals.add_ammunition(cantidad)
 
-# Función útil para tus spawners/cofres
-func  randomize_type():
+# --- CORRECCIÓN AQUÍ ---
+func randomize_type():
+	# Solo cambiamos el dato. No forzamos la animación aquí.
+	# La animación se actualizará automáticamente cuando se ejecute _ready()
 	tipo_actual = Tipo.values().pick_random()
-	update_animation()

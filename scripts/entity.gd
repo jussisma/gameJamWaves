@@ -12,8 +12,8 @@ func _ready() -> void:
 	# LÓGICA DE INICIALIZACIÓN DIFERENCIADA
 	if is_in_group("player"):
 		# Si soy el jugador, ignoro el valor del Inspector y cargo del GameManager
-		max_health = GameManager.max_health
-		current_health = GameManager.health
+		max_health = GameGlobals.max_health
+		current_health = GameGlobals.health
 	else:
 		# Si soy un enemigo, uso la vida que le puse en el Inspector
 		current_health = max_health
@@ -23,8 +23,8 @@ func take_damage(amount: float) -> void:
 	
 	# SINCRONIZACIÓN CON GAMEMANAGER
 	if is_in_group("player"):
-		GameManager.health = current_health
-		print("Jugador recibió daño. Vida restante: ", GameManager.health)
+		GameGlobals.health = current_health
+		print("Jugador recibió daño. Vida restante: ", GameGlobals.health)
 	else:
 		print(name + " (Enemigo) recibió daño. Vida: " + str(current_health))
 	
@@ -39,7 +39,7 @@ func die() -> void:
 	if is_in_group("player"):
 		# Lógica de Game Over
 		print("¡El jugador ha muerto!")
-		GameManager.stop_game()
+		GameGlobals.stop_game()
 		# Aquí podrías llamar a una pantalla de 'Game Over' o pausar el juego
 		# queue_free() NO se suele usar en el jugador para no romper la cámara
 	else:
@@ -54,6 +54,6 @@ func heal(amount: float) -> void:
 		current_health = max_health
 		
 	if is_in_group("player"):
-		GameManager.health = current_health
+		GameGlobals.health = current_health
 		
 	emit_signal("health_changed", current_health)

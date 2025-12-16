@@ -192,10 +192,7 @@ animations = [{
 [node name="BaseEnemy" type="CharacterBody2D"]
 z_index = 10
 script = ExtResource("1_xy85v")
-speed = null
-attack_damage = null
-attack_cooldown = null
-max_health = null
+drop_chance = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2.5, -3)
