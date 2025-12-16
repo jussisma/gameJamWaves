@@ -1,8 +1,7 @@
-[gd_scene load_steps=15 format=4 uid="uid://btf3bbxjdist"]
+[gd_scene load_steps=14 format=4 uid="uid://btf3bbxjdist"]
 
-[ext_resource type="Script" path="res://scripts/Run_Start.gd" id="1_1s6ju"]
+[ext_resource type="Script" uid="uid://c6ij8nsx8wcw4" path="res://scripts/Run_Start.gd" id="1_1s6ju"]
 [ext_resource type="TileSet" uid="uid://i3efm74wxfiw" path="res://tilesets/Sci_fi_Tileset.tres" id="1_6c7kk"]
-[ext_resource type="PackedScene" uid="uid://bml3lwe0ijbcs" path="res://scenes/astronaut.tscn" id="1_ho0kc"]
 [ext_resource type="PackedScene" uid="uid://cpxvnmu2prhse" path="res://scenes/Playing_Interface.tscn" id="1_ukjry"]
 [ext_resource type="Texture2D" uid="uid://yg2e7sr78jeo" path="res://materials/Light.tres" id="2_etni6"]
 [ext_resource type="PackedScene" uid="uid://2bld5pdcp7q2" path="res://scenes/BaseEnemy.tscn" id="2_oboxi"]
@@ -95,10 +94,6 @@ color = Color(0, 0.6, 0, 1)
 texture = SubResource("GradientTexture2D_6c7kk")
 
 [node name="Node2D" parent="." instance=ExtResource("5_i6bg4")]
-
-[node name="CharacterBody2D" parent="." instance=ExtResource("1_ho0kc")]
-
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 
 [node name="Corridor2" type="NavigationRegion2D" parent="."]
 position = Vector2(-12, 8)
