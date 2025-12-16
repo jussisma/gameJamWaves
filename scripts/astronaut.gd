@@ -14,6 +14,7 @@ var last_direction: Vector2 = Vector2(0, 1)
 var is_movement_locked: bool = false
 
 func _ready() -> void:
+	add_to_group("player")
 	if teleport:
 		teleport.teleport_started.connect(_on_teleport_started)
 		teleport.teleport_finished.connect(_on_teleport_finished)
