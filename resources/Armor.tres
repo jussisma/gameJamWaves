@@ -5,11 +5,10 @@
 
 [resource]
 script = ExtResource("1_curi6")
-id = "item_04"
+id = "armor"
 name = "Void Armor Plates"
 description = "Forged from titanium alloy and salvaged alien ship debris. Heavy, but they save lives.
 
 Effect: Increases MAX Health by +50 points."
-price = 500
 icon = ExtResource("1_thhqu")
 metadata/_custom_type_script = "uid://eoyxksdg7apm"

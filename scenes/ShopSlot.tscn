@@ -21,6 +21,7 @@ offset_bottom = 97.0
 expand_mode = 1
 
 [node name="PriceLabel" type="Label" parent="."]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 7.0
 offset_top = 97.0

@@ -9,7 +9,7 @@ const GRENADE_SCENE = preload("res://scenes/GravityGrenade.tscn")
 @onready var teleport: Node2D = $Teleport
 @export var pillar_scene: PackedScene = preload("res://scenes/GravityPillar.tscn")
 
-var speed: float = 200.0
+var speed = GameGlobals.speed
 var last_direction: Vector2 = Vector2(0, 1)
 var is_movement_locked: bool = false
 
@@ -36,14 +36,17 @@ func _physics_process(delta: float) -> void:
 	move_and_slide() 
 	
 	if Input.is_action_just_pressed("gravity_grenade"):
-		throw_gravity_grenade()	
+		if GameGlobals.power_points >= 20:
+			throw_gravity_grenade()
+			GameGlobals.power_points = GameGlobals.power_points - 20	
 
 	if Input.is_action_just_pressed("shoot"):
 		shoot()
 	
 	if Input.is_action_just_pressed("place_pillar"):
-		place_gravity_pillar()	
-
+		if GameGlobals.power_points >= 15:
+			place_gravity_pillar()	
+			GameGlobals.power_points = GameGlobals.power_points - 15
 func shoot() -> void:
 	if bullet_scene == null:
 		print("Błąd: Nie przypisano bullet_scene w Inspektorze gracza!")

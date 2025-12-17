@@ -5,9 +5,11 @@
 
 [resource]
 script = ExtResource("1_s4ac8")
+id = "medkit"
 name = "Nano-Repair Kit"
 description = "A military-grade canister containing medical nanobots. Instantly seals wounds and regenerates tissue.
 
-Effect: Restores 50 Health points."
+Effect: Fully restores health"
+price = 50
 icon = ExtResource("1_vvb25")
 metadata/_custom_type_script = "uid://eoyxksdg7apm"

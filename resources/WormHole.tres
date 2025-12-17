@@ -5,11 +5,11 @@
 
 [resource]
 script = ExtResource("1_f42cs")
-id = "item_05"
+id = "wormhole"
 name = "Quantum Anchor"
 description = "An experimental gadget. Upon death, it reverts your quantum state to a safe moment. Death is now just a minor inconvenience.
 
 Effect: Grants one instant revive upon death."
-price = 1000
+price = 2000
 icon = ExtResource("1_gmy4r")
 metadata/_custom_type_script = "uid://eoyxksdg7apm"

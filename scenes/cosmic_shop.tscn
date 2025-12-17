@@ -37,6 +37,7 @@ animations = [{
 }]
 
 [node name="CosmicShop" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -52,6 +53,7 @@ offset_bottom = 40.0
 texture = ExtResource("1_lfa7d")
 
 [node name="Merchant" type="AnimatedSprite2D" parent="."]
+process_mode = 3
 position = Vector2(618, 325)
 scale = Vector2(0.96166664, 0.80285716)
 sprite_frames = SubResource("SpriteFrames_w86gj")
@@ -59,6 +61,7 @@ animation = &"idle"
 autoplay = "idle"
 
 [node name="CounterOverlay" type="TextureRect" parent="."]
+process_mode = 3
 layout_mode = 0
 offset_left = -24.0
 offset_top = 47.0
@@ -159,3 +162,21 @@ layout_mode = 2
 
 [node name="PriceLabel" type="Label" parent="InfoPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
+
+[node name="WalletPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="MoneyLabel" type="Label" parent="WalletPanel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0.06666667, 1, 0, 1)
+text = "0$"
+horizontal_alignment = 1
+vertical_alignment = 1

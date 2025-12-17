@@ -34,17 +34,19 @@ func take_damage(amount: float) -> void:
 		die()
 
 func die() -> void:
-	emit_signal("died")
+	if GameGlobals.extra_life == false:
+		emit_signal("died")
 	
-	if is_in_group("player"):
+		if is_in_group("player"):
 		# Lógica de Game Over
-		print("¡El jugador ha muerto!")
-		GameGlobals.stop_game()
+			GameGlobals.extra_life = false
+			print("¡El jugador ha muerto!")
+			GameGlobals.stop_game()
 		# Aquí podrías llamar a una pantalla de 'Game Over' o pausar el juego
 		# queue_free() NO se suele usar en el jugador para no romper la cámara
-	else:
+		else:
 		# Si es enemigo, drop de items (opcional) y desaparecer
-		queue_free()
+			queue_free()
 
 # Opcional: Función para curar que también sincronice
 func heal(amount: float) -> void:

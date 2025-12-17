@@ -5,11 +5,11 @@
 
 [resource]
 script = ExtResource("1_6p7s3")
-id = "item_03"
+id = "rifle"
 name = "Particle Accelerator"
 description = "An illegal module that overclocks the weapon's output. It overheats the barrel but shreds enemy armor like paper.
 
-Effect: Increases damage dealt by 20%."
+Effect: Increases damage dealt by 20"
 price = 500
 icon = ExtResource("1_43i46")
 metadata/_custom_type_script = "uid://eoyxksdg7apm"
