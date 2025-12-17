@@ -27,7 +27,9 @@ func _ready() -> void:
 	
 	add_to_group("enemy")
 	attack_timer.wait_time = attack_cooldown
-	attack_timer.timeout.connect(func(): can_attack = true)
+	#attack_timer.timeout.connect(func(): can_attack = true)
+	
+	attack_timer.one_shot = true # Importante: Que solo se ejecute una vez
 
 	await get_tree().process_frame
 	var players = get_tree().get_nodes_in_group("player")
@@ -65,15 +67,21 @@ func _physics_process(_delta: float) -> void: # _delta no se usa, lo marcamos co
 
 # Llamado cuando el jugador entra en la HurtBox
 func _deal_continuous_damage() -> void:
-	if player_in_hurtbox and is_instance_valid(player_in_hurtbox) and can_attack:
-		# Nota: Entity ya tiene take_damage, así que esto siempre funciona si es Entity
-		if player_in_hurtbox.has_method("take_damage"):
-			player_in_hurtbox.take_damage(attack_damage)
-		
-		can_attack = false
-		attack_timer.start()
-		if not is_attacking:  
-			_play_attack_combo()
+	if player_in_hurtbox and is_instance_valid(player_in_hurtbox):
+		# VERIFICACIÓN ROBUSTA: Solo atacamos si el Timer NO está corriendo
+		if attack_timer.is_stopped():
+			
+			# 1. Aplicar daño
+			if player_in_hurtbox.has_method("take_damage"):
+				player_in_hurtbox.take_damage(attack_damage)
+				print("Golpe al jugador! Daño: ", attack_damage) # Debug para consola
+			
+			# 2. Iniciar el tiempo de espera (Cooldown)
+			attack_timer.start()
+			
+			# 3. Animación
+			if not is_attacking:  
+				_play_attack_combo()
 
 func _on_hurt_box_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):

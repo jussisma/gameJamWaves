@@ -14,15 +14,31 @@ var last_direction: Vector2 = Vector2(0, 1)
 var is_movement_locked: bool = false
 
 func _ready() -> void:
+	# 1. ¡IMPORTANTE! Llamar al padre para que configure cosas básicas
+	super._ready()
+	
 	add_to_group("player")
 	
-	# Sync health with GameGlobals at start
-	current_health = int(GameGlobals.max_health)
-	max_health = int(GameGlobals.max_health)
+	# 2. Seguridad: Si GameGlobals.max_health es 0 o null, pon un valor por defecto
+	if GameGlobals.max_health <= 0:
+		GameGlobals.max_health = 100.0
+		print("¡CUIDADO! GameGlobals.max_health era 0. Se forzó a 100.")
 	
+	# Sincronizar vida
+	max_health = GameGlobals.max_health
+	current_health = GameGlobals.health
+	
+	# Si entras al nivel con 0 de vida, reseteala (para pruebas)
+	if current_health <= 0:
+		current_health = max_health
+		GameGlobals.health = current_health
+
 	if teleport:
 		teleport.teleport_started.connect(_on_teleport_started)
 		teleport.teleport_finished.connect(_on_teleport_finished)
+	
+	# DEBUG: Imprimir con cuánta vida empezamos
+	print("Player listo. Vida inicial: ", current_health, "/", max_health)
 
 func _physics_process(delta: float) -> void:
 	if is_movement_locked:
@@ -57,13 +73,24 @@ func shoot() -> void:
 		print("Błąd: Nie przypisano bullet_scene w Inspektorze gracza!")
 		return
 
-	var bullet = bullet_scene.instantiate()
-	
-	bullet.global_position = global_position + (last_direction * bullet_offset)
-
-	bullet.rotation = last_direction.angle() + deg_to_rad(90)
-	
-	get_parent().add_child(bullet)
+	# 1. COMPROBAR MUNICIÓN
+	# Solo disparamos si la munición en GameGlobals es mayor a 0
+	if GameGlobals.get_current_weapon_ammo() > 0:
+		
+		# 2. RESTAR MUNICIÓN
+		GameGlobals.lose_ammunition(1)
+		print("Disparo realizado. Munición restante: ", GameGlobals.ammo)
+		
+		# --- Lógica de instanciación original ---
+		var bullet = bullet_scene.instantiate()
+		bullet.global_position = global_position + (last_direction * bullet_offset)
+		bullet.rotation = last_direction.angle() + deg_to_rad(90)
+		get_parent().add_child(bullet)
+		
+	else:
+		# 3. FEEDBACK SI NO HAY BALAS (Sonido de "click" o mensaje)
+		print("¡Click! Sin munición.")
+		# Aquí podrías poner un sonido: $EmptyAmmoSound.play()
 
 func throw_gravity_grenade():
 	var grenade = GRENADE_SCENE.instantiate()
@@ -114,7 +141,30 @@ func place_gravity_pillar() -> void:
 	
 	get_parent().add_child(pillar)
 
+var is_invincible: bool = false
 # Override take_damage to sync with GameGlobals for UI
 func take_damage(amount: float) -> void:
+	# 1. EL MURO: Si ya soy invencible, NO ejecuto nada más.
+	if is_invincible:
+		return
+	
+	# 2. ACTIVAR INVENCIBILIDAD PRIMERO
+	# Antes de restar vida, cerramos la puerta para que nadie más entre en este frame
+	is_invincible = true
+	
+	# 3. APLICAR DAÑO (Llamar al padre)
 	super.take_damage(amount)
+	
+	# 4. ACTUALIZAR GLOBALES Y UI
 	GameGlobals.health = current_health
+	print("Auch! Vida restante: ", current_health) # Debug para ver si baja de 10 en 10
+	
+	# 5. FEEDBACK VISUAL
+	modulate = Color(1, 0, 0) # Rojo
+	
+	# 6. ESPERAR (Cooldown de invencibilidad)
+	await get_tree().create_timer(1.0).timeout # Aumenté a 1.0s para probar
+	
+	# 7. DESACTIVAR INVENCIBILIDAD
+	modulate = Color(1, 1, 1) # Blanco
+	is_invincible = false
