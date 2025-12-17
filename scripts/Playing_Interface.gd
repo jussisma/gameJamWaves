@@ -4,9 +4,6 @@ extends Control
 signal die
 
 # UI elements
-@onready var world_label: Label = %WorldLabel
-@onready var level_label: Label = %LevelLabel
-@onready var run_label: Label = %RunLabel
 @onready var health_bar: TextureProgressBar = %HealthBar
 @onready var percentage_label: Label = %PercentageLabel
 @onready var power_points_label: Label = %PowerPointsLabel
@@ -14,13 +11,22 @@ signal die
 @onready var ammunition_label: Label = %AmmunitionLabel
 @onready var selected_weapon_label: Label = %SelectedWeaponLabel
 @onready var weapon_image: TextureRect = %WeaponImage
-
+@onready var minimap_camera: Camera2D = $TopRight/SubViewportContainer/SubViewport/Camera
+@onready var minimap_viewport: SubViewport = $TopRight/SubViewportContainer/SubViewport
 
 func _ready() -> void:
+	# Configure minimap to share the same 2D world as the main game
+	if minimap_viewport:
+		minimap_viewport.world_2d = get_viewport().world_2d
 	_refresh_ui()
 
 func _process(_delta: float) -> void:
 	_refresh_ui()
+
+func _physics_process(_delta: float) -> void:
+	# Update minimap camera position to follow player
+	if GameGlobals.player:
+		minimap_camera.global_position = GameGlobals.player.global_position
 
 # Input handling
 func _input(event: InputEvent) -> void:
@@ -40,14 +46,6 @@ func _handle_weapon_selection(event: InputEventKey) -> void:
 
 # Refresh the UI
 func _refresh_ui() -> void:
-	# Progression information
-	if world_label:
-		world_label.text = str(GameGlobals.world)
-	if level_label:
-		level_label.text = str(GameGlobals.level)
-	if run_label:
-		run_label.text = str(GameGlobals.run)
-
 	# Health bar and death detection
 	if health_bar:
 		health_bar.max_value = GameGlobals.max_health

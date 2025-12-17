@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cpxvnmu2prhse" path="res://scenes/Playing_Interface.tscn" id="1_ukjry"]
 [ext_resource type="Texture2D" uid="uid://yg2e7sr78jeo" path="res://materials/Light.tres" id="2_etni6"]
 [ext_resource type="PackedScene" uid="uid://2bld5pdcp7q2" path="res://scenes/BaseEnemy.tscn" id="2_oboxi"]
+[ext_resource type="PackedScene" uid="uid://2bld5pdcp7q2" path="res://scenes/BaseEnemy.tscn" id="2_oboxi"]
 [ext_resource type="Script" uid="uid://boyou3byg33dc" path="res://red_light.gd" id="3_jlul1"]
 [ext_resource type="Script" uid="uid://dstmg5pa7g58m" path="res://Light.gd" id="4_p0rfh"]
 [ext_resource type="Script" uid="uid://dm7tj1ebw0dq" path="res://scripts/enemies/wave_manager.gd" id="7_gb7hl"]

@@ -3,6 +3,9 @@ extends Node
 # State of the game
 var is_game_playing: bool = false
 
+# Player reference
+var player: CharacterBody2D
+
 # Game State Variables
 var world: int = 1
 var level: int = 1
@@ -39,20 +42,22 @@ func _ready() -> void:
 
 
 # Initialize the game state at launch
-func initialize_game(_world: int, _level: int, _run: int, _max_health: float, _weapons: Array[String]) -> void:
-	world = _world
-	level = _level
-	run = _run
+func initialize_game(config: Dictionary) -> void:
+	level = config["level"]
+
+	max_health = config["health"]
+	health = max_health
+	player = config.get("player", null)
+
 	power_points = 0
 	experience = 0
-	max_health = _max_health
-	health = _max_health
+
 	current_weapon_index = 0
 	is_game_playing = true
 
 	# Initialize the weapons equipped
 	weapons_equipped.clear()
-	for weapon_name in _weapons:
+	for weapon_name in config["weapons"]:
 		if weapons_data.has(weapon_name):
 			var weapon_data = weapons_data[weapon_name]
 			weapons_equipped.append({

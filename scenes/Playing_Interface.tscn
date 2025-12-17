@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cpxvnmu2prhse"]
+[gd_scene load_steps=12 format=3 uid="uid://cpxvnmu2prhse"]
 
 [ext_resource type="Script" uid="uid://k17rmrh3w58h" path="res://scripts/Playing_Interface.gd" id="1_mgkp0"]
 [ext_resource type="Texture2D" uid="uid://yp1ovluypps2" path="res://assets/Hologram UI/Icons/31.png" id="2_7w6ex"]
@@ -7,16 +7,19 @@
 [ext_resource type="Texture2D" uid="uid://cxi7xytyq34jb" path="res://assets/Hologram UI/progressbar.png" id="3_kevdd"]
 [ext_resource type="Texture2D" uid="uid://bko2uva3g3v34" path="res://assets/Hologram UI/progressbar_complete.png" id="4_040ao"]
 [ext_resource type="Texture2D" uid="uid://8lslrjoeq5ix" path="res://assets/guns/BazookaM20.png" id="6_kevdd"]
+[ext_resource type="Texture2D" uid="uid://b61yk5kodrs1" path="res://assets/Hologram UI/Card X2 (2).png" id="7_8k22v"]
+[ext_resource type="Texture2D" uid="uid://c4iwx3lggfnpq" path="res://assets/Hologram UI/Icons/19.png" id="10_j0iuv"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_6sd77"]
 font_size = 20
 shadow_color = Color(0, 0, 0, 0.5568628)
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_juxq4"]
-load_path = "res://.godot/imported/Card X3 (2).png-042361118812dac59f90e96e6952dcb4.ctex"
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1"]
-texture = SubResource("CompressedTexture2D_juxq4")
+content_margin_left = 12.0
+content_margin_top = 18.0
+content_margin_right = 12.0
+content_margin_bottom = 12.0
+texture = ExtResource("7_8k22v")
 
 [node name="Playing_Interface" type="CanvasLayer"]
 layer = 100
@@ -159,3 +162,30 @@ size_flags_horizontal = 4
 text = "amu/max"
 label_settings = SubResource("LabelSettings_6sd77")
 horizontal_alignment = 1
+
+[node name="TopRight" type="PanelContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -250.0
+offset_bottom = 250.0
+grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_1")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Control/TopRight"]
+layout_mode = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="Control/TopRight/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(226, 220)
+render_target_update_mode = 4
+
+[node name="Camera" type="Camera2D" parent="Control/TopRight/SubViewportContainer/SubViewport"]
+zoom = Vector2(0.2, 0.2)
+
+[node name="Marker" type="Sprite2D" parent="Control/TopRight/SubViewportContainer"]
+position = Vector2(115, 90)
+texture = ExtResource("10_j0iuv")
