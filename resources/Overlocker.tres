@@ -5,11 +5,11 @@
 
 [resource]
 script = ExtResource("1_p57jm")
-id = "item_08"
+id = "overlocker"
 name = "Neural Overlocker"
 description = "An implant that hijacks your nervous system to speed up reaction times. You'll move faster than the eye can track, but try not to burn out your synapses. 
 
 Effect: Increases Movement Speed by 15%."
-price = 200
+price = 1000
 icon = ExtResource("1_mkk2i")
 metadata/_custom_type_script = "uid://eoyxksdg7apm"

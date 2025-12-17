@@ -42,3 +42,16 @@ func _on_mouse_exited():
 func _on_pressed():
 	if item_data:
 		bought.emit(self, item_data)
+		
+func update_slot_visuals(current_price: int, player_money: int) -> void:
+	# Aktualizujemy tekst ceny
+	%PriceLabel.text = str(current_price)
+	
+	# Zmieniamy kolor, jeśli gracza nie stać
+	if player_money < current_price:
+		%PriceLabel.modulate = Color.RED
+		# Opcjonalnie: przyciemnij cały slot
+		modulate = Color(0.7, 0.7, 0.7, 1) 
+	else:
+		%PriceLabel.modulate = Color.WHITE
+		modulate = Color.WHITE		

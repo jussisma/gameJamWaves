@@ -5,10 +5,11 @@
 
 [resource]
 script = ExtResource("1_4xp0c")
-id = "item_02"
+id = "ammo"
 name = "Plasma Cells"
 description = "Standard fusion batteries compatible with most stellar blasters. You never know when you'll run out of juice in the heat of battle.
 
-Effect: Fully replenishes Ammo."
+Effect: Adds 10 ammo"
+price = 50
 icon = ExtResource("1_lajqf")
 metadata/_custom_type_script = "uid://eoyxksdg7apm"

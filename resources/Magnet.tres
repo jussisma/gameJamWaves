@@ -5,10 +5,11 @@
 
 [resource]
 script = ExtResource("1_asden")
-id = "item_07"
+id = "magnet"
 name = "Matter Attractor"
 description = "A portable gravity well generator. It bends local space-time to pull valuable resources directly into your pockets. Laziness is the mother of invention. 
 
 Effect: Automatically collects items from a distance."
+price = 500
 icon = ExtResource("1_avln7")
 metadata/_custom_type_script = "uid://eoyxksdg7apm"
