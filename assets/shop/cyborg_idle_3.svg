@@ -1,0 +1,43 @@
+<svg width="600" height="700" viewBox="0 0 600 700" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="alien_skin" x1="300" y1="0" x2="300" y2="300" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#8899AA"/>
+            <stop offset="1" stop-color="#445566"/>
+        </linearGradient>
+        <radialGradient id="void_eye" cx="0.5" cy="0.5" r="0.5">
+            <stop offset="0.7" stop-color="#000000"/>
+            <stop offset="1" stop-color="#220033"/>
+        </radialGradient>
+        <linearGradient id="jacket_grad" x1="100" y1="300" x2="500" y2="700" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#3A2A20"/>
+            <stop offset="1" stop-color="#1A1005"/>
+        </linearGradient>
+    </defs>
+
+    <path d="M125 705 L165 305 L205 255 H400 L440 305 L480 705 H125Z" fill="url(#jacket_grad)" stroke="#111" stroke-width="2"/>
+    <path d="M165 305 L205 255 L225 355 M440 305 L400 255 L380 355" stroke="#532" stroke-width="4"/>
+    <rect x="255" y="405" width="100" height="150" fill="#221111" opacity="0.3"/>
+
+    <rect x="230" y="245" width="140" height="60" rx="10" fill="#111" stroke="#333" stroke-width="3"/>
+    <path d="M290 255 V295 M310 255 V295 M330 255 V295" stroke="#444" stroke-width="3"/>
+
+    <g id="head" transform="translate(0, 5)">
+        <path d="M300 30 C240 30 180 100 200 200 C210 240 260 280 300 280 C340 280 390 240 400 200 C420 100 360 30 300 30" fill="url(#alien_skin)"/>
+        
+        <path d="M220 180 C210 150 230 120 260 130 C280 140 270 190 250 200 C230 210 220 180 220 180" fill="url(#void_eye)"/>
+        <path d="M380 180 C390 150 370 120 340 130 C320 140 330 190 350 200 C370 210 380 180 380 180" fill="url(#void_eye)"/>
+
+        <path d="M220 180 C210 150 230 120 260 130 C280 140 270 190 250 200 C230 210 220 180 220 180" fill="#556677" opacity="0.8"/>
+        <path d="M380 180 C390 150 370 120 340 130 C320 140 330 190 350 200 C370 210 380 180 380 180" fill="#556677" opacity="0.8"/>
+
+        <path d="M290 220 L295 210 M310 220 L305 210" stroke="#334455" stroke-width="2"/>
+        <path d="M280 250 Q300 255 320 250" stroke="#334455" stroke-width="2"/>
+    </g>
+
+    <g transform="translate(0, 55)">
+        <path d="M120 350 Q80 450 100 600" stroke="#778899" stroke-width="30"/>
+        <path d="M480 350 Q520 450 500 600" stroke="#778899" stroke-width="30"/>
+        <ellipse cx="140" cy="580" rx="30" ry="20" fill="#778899"/>
+        <ellipse cx="460" cy="580" rx="30" ry="20" fill="#778899"/>
+    </g>
+</svg>

@@ -40,5 +40,5 @@ func _spawn_8_bullets() -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemy"):
 		if body.has_method("take_damage"):
-			body.take_damage(50)
+			body.take_damage(GameGlobals.damage)
 		queue_free()

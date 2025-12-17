@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ShopItemData" load_steps=3 format=3 uid="uid://b58r8vvi4rtve"]
+
+[ext_resource type="Texture2D" uid="uid://cdv1uxmqajjxv" path="res://assets/shop/icon_elixir.svg" id="1_61vld"]
+[ext_resource type="Script" uid="uid://eoyxksdg7apm" path="res://data/shop_item_data.gd" id="1_opppv"]
+
+[resource]
+script = ExtResource("1_opppv")
+id = "elixir"
+name = "Aether Stimulant"
+description = "Condensed liquid dark matter. It stabilizes anomalies and allows your body to bend the laws of physics for much longer.
+
+Effect: Fully restores Gravity Energy."
+price = 50
+icon = ExtResource("1_61vld")
+metadata/_custom_type_script = "uid://eoyxksdg7apm"

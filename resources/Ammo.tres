@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ShopItemData" load_steps=3 format=3 uid="uid://b3kltqwih7rp7"]
+
+[ext_resource type="Script" uid="uid://eoyxksdg7apm" path="res://data/shop_item_data.gd" id="1_4xp0c"]
+[ext_resource type="Texture2D" uid="uid://chuxugyfv0mww" path="res://assets/shop/icon_ammo.svg" id="1_lajqf"]
+
+[resource]
+script = ExtResource("1_4xp0c")
+id = "ammo"
+name = "Plasma Cells"
+description = "Standard fusion batteries compatible with most stellar blasters. You never know when you'll run out of juice in the heat of battle.
+
+Effect: Adds 10 ammo"
+price = 50
+icon = ExtResource("1_lajqf")
+metadata/_custom_type_script = "uid://eoyxksdg7apm"

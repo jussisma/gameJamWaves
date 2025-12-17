@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <radialGradient id="magnet_core" cx="0.5" cy="0.5" r="0.5">
+            <stop stop-color="#FF0055"/>
+            <stop offset="1" stop-color="#550011"/>
+        </radialGradient>
+    </defs>
+
+    <circle cx="50" cy="50" r="45" stroke="#FF0055" stroke-width="2" stroke-opacity="0.2" fill="none"/>
+    <circle cx="50" cy="50" r="35" stroke="#FF0055" stroke-width="3" stroke-opacity="0.4" fill="none"/>
+    <circle cx="50" cy="50" r="25" stroke="#FF0055" stroke-width="4" stroke-opacity="0.6" fill="none"/>
+
+    <path d="M50 15 L55 25 H45 Z" fill="#333333"/>
+    <path d="M20 70 L30 65 L35 75 Z" fill="#333333"/>
+    <path d="M80 70 L70 65 L65 75 Z" fill="#333333"/>
+
+    <circle cx="50" cy="50" r="15" fill="url(#magnet_core)" stroke="#FFAAAA" stroke-width="2"/>
+    
+    <path d="M50 35 V25" stroke="#FFFFFF" stroke-width="2"/>
+    <path d="M38 42 L30 35" stroke="#FFFFFF" stroke-width="2"/>
+    <path d="M62 42 L70 35" stroke="#FFFFFF" stroke-width="2"/>
+    <path d="M40 60 L35 70" stroke="#FFFFFF" stroke-width="2"/>
+    <path d="M60 60 L65 70" stroke="#FFFFFF" stroke-width="2"/>
+</svg>

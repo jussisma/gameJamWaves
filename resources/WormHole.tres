@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ShopItemData" load_steps=3 format=3 uid="uid://bpmi6asx10kmv"]
+
+[ext_resource type="Script" uid="uid://eoyxksdg7apm" path="res://data/shop_item_data.gd" id="1_f42cs"]
+[ext_resource type="Texture2D" uid="uid://byr3seasjyum6" path="res://assets/shop/icon_wormhole.svg" id="1_gmy4r"]
+
+[resource]
+script = ExtResource("1_f42cs")
+id = "wormhole"
+name = "Quantum Anchor"
+description = "An experimental gadget. Upon death, it reverts your quantum state to a safe moment. Death is now just a minor inconvenience.
+
+Effect: Grants one instant revive upon death."
+price = 2000
+icon = ExtResource("1_gmy4r")
+metadata/_custom_type_script = "uid://eoyxksdg7apm"

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ShopItemData" load_steps=3 format=3 uid="uid://cqx2rkqc8p1h2"]
+
+[ext_resource type="Texture2D" uid="uid://mx2r30nuabnq" path="res://assets/shop/icon_chip.svg" id="1_mkk2i"]
+[ext_resource type="Script" uid="uid://eoyxksdg7apm" path="res://data/shop_item_data.gd" id="1_p57jm"]
+
+[resource]
+script = ExtResource("1_p57jm")
+id = "overlocker"
+name = "Neural Overlocker"
+description = "An implant that hijacks your nervous system to speed up reaction times. You'll move faster than the eye can track, but try not to burn out your synapses. 
+
+Effect: Increases Movement Speed by 15%."
+price = 1000
+icon = ExtResource("1_mkk2i")
+metadata/_custom_type_script = "uid://eoyxksdg7apm"

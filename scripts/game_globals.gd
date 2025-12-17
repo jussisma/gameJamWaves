@@ -8,6 +8,12 @@ var world: int = 1
 var level: int = 1
 var run: int = 1
 
+# Shop items
+var magnet_unlocked: bool = false  # Czy kupiono ulepszenie?
+var magnet_range: float = 150.0    # Zasięg przyciągania w pikselach
+var magnet_speed: float = 5.0      # Prędkość przyciągania (siła magnesu)
+var extra_life: bool = false
+
 # Player Stats
 var power_points: int = 0
 var experience: int = 0
@@ -15,6 +21,10 @@ var max_health: float = 0.0
 var health: float:
 	set(value):
 		health = clamp(value, 0.0, max_health)
+var money: int = 0
+var ammo: int = 0
+var damage: float = 50.0
+var speed: float = 200.0
 
 # Weapon Data
 var weapons_data: Dictionary = {}

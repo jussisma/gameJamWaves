@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ShopItemData" load_steps=3 format=3 uid="uid://dsr33o56pfqvj"]
+
+[ext_resource type="Script" uid="uid://eoyxksdg7apm" path="res://data/shop_item_data.gd" id="1_s4ac8"]
+[ext_resource type="Texture2D" uid="uid://hyawuyqtna4b" path="res://assets/shop/icon_medkit.svg" id="1_vvb25"]
+
+[resource]
+script = ExtResource("1_s4ac8")
+id = "medkit"
+name = "Nano-Repair Kit"
+description = "A military-grade canister containing medical nanobots. Instantly seals wounds and regenerates tissue.
+
+Effect: Fully restores health"
+price = 50
+icon = ExtResource("1_vvb25")
+metadata/_custom_type_script = "uid://eoyxksdg7apm"

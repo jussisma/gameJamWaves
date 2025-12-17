@@ -39,6 +39,7 @@ tangential_accel_min = 49.999996
 tangential_accel_max = 99.99999
 
 [node name="BlackHole" type="Area2D"]
+z_index = 1
 gravity_space_override = 3
 gravity_point = true
 gravity = 4000.0

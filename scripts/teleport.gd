@@ -28,7 +28,9 @@ func _physics_process(_delta: float) -> void:
 	if is_aiming:
 		aim()
 		if Input.is_action_just_pressed("teleport"):
-			execute_teleport()
+			if GameGlobals.power_points >= 5:
+				execute_teleport()
+				GameGlobals.power_points = GameGlobals.power_points - 5
 
 func start_aiming() -> void:
 	is_aiming = true

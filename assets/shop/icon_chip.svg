@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="chip_grad" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#222222"/>
+            <stop offset="1" stop-color="#000000"/>
+        </linearGradient>
+    </defs>
+
+    <rect x="15" y="15" width="70" height="70" rx="5" fill="url(#chip_grad)" stroke="#444444" stroke-width="2"/>
+    
+    <path d="M10 25 H15 M10 35 H15 M10 45 H15 M10 55 H15 M10 65 H15 M10 75 H15" stroke="#FFCC00" stroke-width="3"/>
+    <path d="M85 25 H90 M85 35 H90 M85 45 H90 M85 55 H90 M85 65 H90 M85 75 H90" stroke="#FFCC00" stroke-width="3"/>
+    <path d="M25 10 V15 M35 10 V15 M45 10 V15 M55 10 V15 M65 10 V15 M75 10 V15" stroke="#FFCC00" stroke-width="3"/>
+    <path d="M25 85 V90 M35 85 V90 M45 85 V90 M55 85 V90 M65 85 V90 M75 85 V90" stroke="#FFCC00" stroke-width="3"/>
+
+    <path d="M30 30 H40 L50 40 V60 L60 70 H70" stroke="#00FF99" stroke-width="2" fill="none"/>
+    <path d="M70 30 H60 L50 40" stroke="#00FF99" stroke-width="2" fill="none"/>
+    <path d="M30 70 H40 L45 65" stroke="#00FF99" stroke-width="2" fill="none"/>
+    
+    <rect x="35" y="35" width="30" height="30" rx="2" fill="#111111" stroke="#00FF99" stroke-width="2"/>
+    <rect x="42" y="42" width="16" height="16" fill="#00FF99" fill-opacity="0.5"/>
+</svg>
