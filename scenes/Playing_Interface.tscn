@@ -21,6 +21,20 @@ content_margin_right = 12.0
 content_margin_bottom = 12.0
 texture = ExtResource("7_8k22v")
 
+[sub_resource type="Shader" id="Shader_minimap"]
+code = "shader_type canvas_item;
+
+// Brighten the minimap
+void fragment() {
+	vec4 color = texture(TEXTURE, UV);
+	color.rgb *= 2.0;
+	COLOR = color;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_minimap"]
+shader = SubResource("Shader_minimap")
+
 [node name="Playing_Interface" type="CanvasLayer"]
 layer = 100
 
@@ -174,6 +188,7 @@ grow_horizontal = 0
 theme_override_styles/panel = SubResource("StyleBoxTexture_1")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="Control/TopRight"]
+material = SubResource("ShaderMaterial_minimap")
 layout_mode = 2
 stretch = true
 
