@@ -52,8 +52,13 @@ func _spawn_single_enemy() -> void:
 		push_error("WaveManager: enemy_scene or spawn_points not configured!")
 		return
 	
-	# Choose a random spawn point
-	var spawn_point = spawn_points.pick_random()
+	# Filter out null spawn points and choose a random one
+	var valid_spawn_points = spawn_points.filter(func(p): return p != null)
+	if valid_spawn_points.is_empty():
+		push_error("WaveManager: No valid spawn points!")
+		return
+	
+	var spawn_point = valid_spawn_points.pick_random()
 	
 	var enemy = enemy_scene.instantiate()
 	enemy.global_position = spawn_point.global_position
