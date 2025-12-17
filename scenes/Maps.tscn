@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=4 uid="uid://btf3bbxjdist"]
+[gd_scene load_steps=15 format=4 uid="uid://btf3bbxjdist"]
 
 [ext_resource type="Script" uid="uid://c6ij8nsx8wcw4" path="res://scripts/Run_Start.gd" id="1_1s6ju"]
 [ext_resource type="TileSet" uid="uid://i3efm74wxfiw" path="res://tilesets/Sci_fi_Tileset.tres" id="1_6c7kk"]
 [ext_resource type="PackedScene" uid="uid://bml3lwe0ijbcs" path="res://scenes/astronaut.tscn" id="1_ho0kc"]
 [ext_resource type="PackedScene" uid="uid://cpxvnmu2prhse" path="res://scenes/Playing_Interface.tscn" id="1_ukjry"]
 [ext_resource type="Texture2D" uid="uid://yg2e7sr78jeo" path="res://materials/Light.tres" id="2_etni6"]
+[ext_resource type="AudioStream" uid="uid://cf4bafmrf45mf" path="res://assets/space_invaders___space_invaders.wav" id="2_h5k3w"]
 [ext_resource type="PackedScene" uid="uid://2bld5pdcp7q2" path="res://scenes/BaseEnemy.tscn" id="2_oboxi"]
 [ext_resource type="Script" uid="uid://boyou3byg33dc" path="res://red_light.gd" id="3_jlul1"]
 [ext_resource type="Script" uid="uid://dstmg5pa7g58m" path="res://Light.gd" id="4_p0rfh"]
@@ -27,6 +28,7 @@ fill_from = Vector2(0.517094, 0.10683761)
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_1s6ju")
+level_music = ExtResource("2_h5k3w")
 
 [node name="Playing_Interface" parent="." instance=ExtResource("1_ukjry")]
 

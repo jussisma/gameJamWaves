@@ -8,6 +8,7 @@ var current_health: float
 signal health_changed(new_health)
 signal died
 
+
 func _ready() -> void:
 	# LÓGICA DE INICIALIZACIÓN DIFERENCIADA
 	if is_in_group("player"):

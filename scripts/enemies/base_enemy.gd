@@ -75,7 +75,7 @@ func _deal_continuous_damage() -> void:
 			if player_in_hurtbox.has_method("take_damage"):
 				player_in_hurtbox.take_damage(attack_damage)
 				print("Golpe al jugador! Daño: ", attack_damage) # Debug para consola
-			
+			AudioManager.play_sfx("enemy_attack")
 			# 2. Iniciar el tiempo de espera (Cooldown)
 			attack_timer.start()
 			

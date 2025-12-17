@@ -13,6 +13,10 @@ var speed = GameGlobals.speed
 var last_direction: Vector2 = Vector2(0, 1)
 var is_movement_locked: bool = false
 
+# Variables para el sonido de pasos
+var time_since_last_step: float = 0.0
+@export var step_interval: float = 0.35 # Tiempo en segundos entre cada paso (ajústalo a la velocidad de tu anim)
+
 func _ready() -> void:
 	# 1. ¡IMPORTANTE! Llamar al padre para que configure cosas básicas
 	super._ready()
@@ -54,6 +58,20 @@ func _physics_process(delta: float) -> void:
 		velocity = Vector2.ZERO
 		play_animation("idle", last_direction)
 	
+	if velocity.length() > 0: # ¿Nos estamos moviendo?
+		time_since_last_step -= delta
+		
+		if time_since_last_step <= 0:
+			# Reproducir sonido
+			# Usamos pitch aleatorio (0.8 a 1.2) para que no suene robótico siempre igual
+			AudioManager.play_sfx("move", randf_range(0.8, 1.2))
+			
+			# Reiniciar el contador
+			time_since_last_step = step_interval
+	else:
+		# Si paramos, reseteamos para que el siguiente paso suene inmeditamente al arrancar
+		time_since_last_step = 0
+	
 	move_and_slide() 
 	
 	if Input.is_action_just_pressed("gravity_grenade"):
@@ -85,8 +103,8 @@ func shoot() -> void:
 		var bullet = bullet_scene.instantiate()
 		bullet.global_position = global_position + (last_direction * bullet_offset)
 		bullet.rotation = last_direction.angle() + deg_to_rad(90)
-		get_parent().add_child(bullet)
-		
+		get_parent().add_child(bullet,1)
+		AudioManager.play_sfx("shoot")
 	else:
 		# 3. FEEDBACK SI NO HAY BALAS (Sonido de "click" o mensaje)
 		print("¡Click! Sin munición.")
