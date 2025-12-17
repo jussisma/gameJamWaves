@@ -1,15 +1,15 @@
-[gd_scene load_steps=14 format=4 uid="uid://btf3bbxjdist"]
+[gd_scene load_steps=16 format=4 uid="uid://btf3bbxjdist"]
 
 [ext_resource type="Script" uid="uid://c6ij8nsx8wcw4" path="res://scripts/Run_Start.gd" id="1_1s6ju"]
 [ext_resource type="TileSet" uid="uid://i3efm74wxfiw" path="res://tilesets/Sci_fi_Tileset.tres" id="1_6c7kk"]
+[ext_resource type="PackedScene" uid="uid://bml3lwe0ijbcs" path="res://scenes/astronaut.tscn" id="1_ho0kc"]
 [ext_resource type="PackedScene" uid="uid://cpxvnmu2prhse" path="res://scenes/Playing_Interface.tscn" id="1_ukjry"]
 [ext_resource type="Texture2D" uid="uid://yg2e7sr78jeo" path="res://materials/Light.tres" id="2_etni6"]
-[ext_resource type="PackedScene" uid="uid://2bld5pdcp7q2" path="res://scenes/BaseEnemy.tscn" id="2_oboxi"]
+[ext_resource type="PackedScene" path="res://scenes/BaseEnemy.tscn" id="2_oboxi"]
 [ext_resource type="Script" uid="uid://boyou3byg33dc" path="res://red_light.gd" id="3_jlul1"]
 [ext_resource type="Script" uid="uid://dstmg5pa7g58m" path="res://Light.gd" id="4_p0rfh"]
-[ext_resource type="PackedScene" uid="uid://n7uj0tl1h8xp" path="res://Character.tscn" id="5_i6bg4"]
-[ext_resource type="Script" uid="uid://dm7tj1ebw0dq" path="res://scripts/enemies/wave_manager.gd" id="7_gb7hl"]
-[ext_resource type="PackedScene" uid="uid://dff3khn5sn0fb" path="res://scenes/cosmic_shop.tscn" id="9_oboxi"]
+[ext_resource type="PackedScene" uid="uid://n7uj0tl1h8xp" path="res://scenes/main.tscn" id="5_i6bg4"]
+[ext_resource type="PackedScene" path="res://scenes/cosmic_shop.tscn" id="9_oboxi"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_gb7hl"]
 vertices = PackedVector2Array(390.39063, 864.9375, 391.59375, 895, -78, 895, 11.9296875, 862.9531, -78, 482.22656, 15.0703125, 382.8672, 114.42969, 358, 113.421875, 333.9297, 397.03125, 332.0625, 397.96094, 624.89844, 113.953125, 622.09375, 112.96094, 384.1328, 12, 358, -10.7578125, 81, -13.75, -45.046875, 329.10938, -46.9375, 330.8828, 112.97656, -504.95313, 111.99219, -592.7031, 81, -581.28125, 475.03125, -506.04688, 338.07813, -91.046875, 477.0078, 12, 334.0703)
@@ -101,5 +101,9 @@ position = Vector2(360, 884)
 [node name="Marker2D2" type="Marker2D" parent="WaveManager"]
 position = Vector2(-533, 434)
 
-[node name="Marker2D3" type="Marker2D" parent="WaveManager"]
-position = Vector2(258, 453)
+[node name="BaseEnemy4" parent="." instance=ExtResource("2_oboxi")]
+position = Vector2(-549, 426)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_ho0kc")]
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]

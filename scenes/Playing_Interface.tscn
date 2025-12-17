@@ -1,11 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://cpxvnmu2prhse"]
+[gd_scene load_steps=11 format=3 uid="uid://cpxvnmu2prhse"]
 
 [ext_resource type="Script" uid="uid://k17rmrh3w58h" path="res://scripts/Playing_Interface.gd" id="1_mgkp0"]
-[ext_resource type="Texture2D" uid="uid://rtjhwigcrr1e" path="res://assets/icon.svg" id="2_qw5h6"]
+[ext_resource type="Texture2D" uid="uid://yp1ovluypps2" path="res://assets/Hologram UI/Icons/31.png" id="2_7w6ex"]
+[ext_resource type="Texture2D" uid="uid://cg1imcc2lvl53" path="res://assets/Hologram UI/Icons/04.png" id="2_juxq4"]
+[ext_resource type="Texture2D" uid="uid://dmsalt8ryhduf" path="res://assets/Hologram UI/Icons/07.png" id="3_8k22v"]
+[ext_resource type="Texture2D" uid="uid://cxi7xytyq34jb" path="res://assets/Hologram UI/progressbar.png" id="3_kevdd"]
+[ext_resource type="Texture2D" uid="uid://bko2uva3g3v34" path="res://assets/Hologram UI/progressbar_complete.png" id="4_040ao"]
+[ext_resource type="Texture2D" uid="uid://8lslrjoeq5ix" path="res://assets/guns/BazookaM20.png" id="6_kevdd"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_6sd77"]
 font_size = 20
 shadow_color = Color(0, 0, 0, 0.5568628)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_juxq4"]
+load_path = "res://.godot/imported/Card X3 (2).png-042361118812dac59f90e96e6952dcb4.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1"]
+texture = SubResource("CompressedTexture2D_juxq4")
 
 [node name="Playing_Interface" type="CanvasLayer"]
 layer = 100
@@ -19,66 +30,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_mgkp0")
 
-[node name="UpRight" type="VBoxContainer" parent="Control"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -86.0
-offset_bottom = 92.0
-grow_horizontal = 0
-
-[node name="WorldBox" type="HBoxContainer" parent="Control/UpRight"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/separation = 16
-
-[node name="Label" type="Label" parent="Control/UpRight/WorldBox"]
-layout_mode = 2
-text = "World"
-label_settings = SubResource("LabelSettings_6sd77")
-
-[node name="WorldLabel" type="Label" parent="Control/UpRight/WorldBox"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 10
-text = "0"
-label_settings = SubResource("LabelSettings_6sd77")
-
-[node name="LevelBox" type="HBoxContainer" parent="Control/UpRight"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/separation = 16
-
-[node name="Label" type="Label" parent="Control/UpRight/LevelBox"]
-layout_mode = 2
-text = "Level"
-label_settings = SubResource("LabelSettings_6sd77")
-
-[node name="LevelLabel" type="Label" parent="Control/UpRight/LevelBox"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 10
-text = "0"
-label_settings = SubResource("LabelSettings_6sd77")
-
-[node name="RunBox" type="HBoxContainer" parent="Control/UpRight"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/separation = 16
-
-[node name="Label" type="Label" parent="Control/UpRight/RunBox"]
-layout_mode = 2
-text = "Run"
-label_settings = SubResource("LabelSettings_6sd77")
-
-[node name="RunLabel" type="Label" parent="Control/UpRight/RunBox"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 10
-text = "0"
-label_settings = SubResource("LabelSettings_6sd77")
-
 [node name="BottomLeft" type="VBoxContainer" parent="Control"]
 layout_mode = 1
 anchors_preset = 2
@@ -88,85 +39,123 @@ offset_top = -59.0
 offset_right = 144.0
 grow_vertical = 0
 
-[node name="ProgressBarBox" type="HBoxContainer" parent="Control/BottomLeft"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/BottomLeft"]
 layout_mode = 2
-theme_override_constants/separation = 8
+size_flags_horizontal = 4
+theme_override_constants/separation = 30
 
-[node name="TextureRect" type="TextureRect" parent="Control/BottomLeft/ProgressBarBox"]
-layout_mode = 2
-texture = ExtResource("2_qw5h6")
-expand_mode = 2
-
-[node name="HealthBar" type="ProgressBar" parent="Control/BottomLeft/ProgressBarBox"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
-
-[node name="PowerPoints" type="HBoxContainer" parent="Control/BottomLeft"]
+[node name="Experience" type="HBoxContainer" parent="Control/BottomLeft/HBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 16
 
-[node name="Label" type="Label" parent="Control/BottomLeft/PowerPoints"]
+[node name="Icon" type="TextureRect" parent="Control/BottomLeft/HBoxContainer/Experience"]
+custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
-text = "Power points "
-label_settings = SubResource("LabelSettings_6sd77")
+size_flags_vertical = 4
+texture = ExtResource("2_7w6ex")
+stretch_mode = 4
 
-[node name="PowerPointsLabel" type="Label" parent="Control/BottomLeft/PowerPoints"]
+[node name="ExperienceLabel" type="Label" parent="Control/BottomLeft/HBoxContainer/Experience"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 10
 text = "0"
 label_settings = SubResource("LabelSettings_6sd77")
 
-[node name="BottomRight" type="VBoxContainer" parent="Control"]
+[node name="PowerPoints" type="HBoxContainer" parent="Control/BottomLeft/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+
+[node name="Icon" type="TextureRect" parent="Control/BottomLeft/HBoxContainer/PowerPoints"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("3_8k22v")
+stretch_mode = 4
+
+[node name="PowerPointsLabel" type="Label" parent="Control/BottomLeft/HBoxContainer/PowerPoints"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+text = "0"
+label_settings = SubResource("LabelSettings_6sd77")
+
+[node name="ProgressBarBox" type="HBoxContainer" parent="Control/BottomLeft"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="HealthBar" type="TextureProgressBar" parent="Control/BottomLeft/ProgressBarBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 65)
+layout_mode = 2
+size_flags_horizontal = 3
+value = 50.0
+texture_under = ExtResource("3_kevdd")
+texture_progress = ExtResource("4_040ao")
+
+[node name="IconContainer" type="HBoxContainer" parent="Control/BottomLeft/ProgressBarBox/HealthBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Icon" type="TextureRect" parent="Control/BottomLeft/ProgressBarBox/HealthBar/IconContainer"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+texture = ExtResource("2_juxq4")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="PercentageLabel" type="Label" parent="Control/BottomLeft/ProgressBarBox/HealthBar/IconContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "50%"
+label_settings = SubResource("LabelSettings_6sd77")
+
+[node name="BottomRight" type="PanelContainer" parent="Control"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -194.0
-offset_top = -60.0
+offset_left = -258.0
+offset_top = -158.0
+offset_right = -8.0
+offset_bottom = -8.0
 grow_horizontal = 0
 grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_1")
 
-[node name="WeaponImage" type="TextureRect" parent="Control/BottomRight"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/BottomRight"]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="WeaponImage" type="TextureRect" parent="Control/BottomRight/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-texture = ExtResource("2_qw5h6")
+size_flags_horizontal = 4
+texture = ExtResource("6_kevdd")
 stretch_mode = 5
 
-[node name="SelectedWeaponLabel" type="Label" parent="Control/BottomRight"]
+[node name="SelectedWeaponLabel" type="Label" parent="Control/BottomRight/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 text = "gun name"
 label_settings = SubResource("LabelSettings_6sd77")
+horizontal_alignment = 1
 
-[node name="AmmunitionLabel" type="Label" parent="Control/BottomRight"]
+[node name="AmmunitionLabel" type="Label" parent="Control/BottomRight/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 text = "amu/max"
 label_settings = SubResource("LabelSettings_6sd77")
-
-[node name="Experience" type="HBoxContainer" parent="Control"]
-layout_mode = 1
-offset_right = 86.0
-offset_bottom = 40.0
-size_flags_vertical = 3
-theme_override_constants/separation = 16
-
-[node name="Label" type="Label" parent="Control/Experience"]
-layout_mode = 2
-text = "EXP"
-label_settings = SubResource("LabelSettings_6sd77")
-
-[node name="ExperienceLabel" type="Label" parent="Control/Experience"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 10
-text = "0"
-label_settings = SubResource("LabelSettings_6sd77")
+horizontal_alignment = 1

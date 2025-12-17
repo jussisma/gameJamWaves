@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://uf4d2m8u5hft"
-path="res://.godot/imported/BazookaM20.png-54c84ba0f0b2cd34b27b9acc192315ec.ctex"
+uid="uid://br47vu6ukpivf"
+path="res://.godot/imported/11.png-2e5f47cd8e49a1bc0f963daf1c83fb05.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://guns/BazookaM20.png"
-dest_files=["res://.godot/imported/BazookaM20.png-54c84ba0f0b2cd34b27b9acc192315ec.ctex"]
+source_file="res://assets/Hologram UI/Icons/11.png"
+dest_files=["res://.godot/imported/11.png-2e5f47cd8e49a1bc0f963daf1c83fb05.ctex"]
 
 [params]
 

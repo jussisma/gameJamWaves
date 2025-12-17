@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3wky2ie3ss27"
-path="res://.godot/imported/RevolverColt45.png-8c5b964119d6eede8e7c9f20071f07f6.ctex"
+uid="uid://b84tqmh5bem1q"
+path="res://.godot/imported/21.png-f209a12558023c2567768ba8caa1d1b6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://guns/RevolverColt45.png"
-dest_files=["res://.godot/imported/RevolverColt45.png-8c5b964119d6eede8e7c9f20071f07f6.ctex"]
+source_file="res://assets/Hologram UI/Icons/21.png"
+dest_files=["res://.godot/imported/21.png-f209a12558023c2567768ba8caa1d1b6.ctex"]
 
 [params]
 
