@@ -115,6 +115,6 @@ func place_gravity_pillar() -> void:
 	get_parent().add_child(pillar)
 
 # Override take_damage to sync with GameGlobals for UI
-func take_damage(amount: int) -> void:
+func take_damage(amount: float) -> void:
 	super.take_damage(amount)
 	GameGlobals.health = current_health
