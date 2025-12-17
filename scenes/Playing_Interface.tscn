@@ -1,7 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://cpxvnmu2prhse"]
+[gd_scene load_steps=13 format=3 uid="uid://cpxvnmu2prhse"]
 
 [ext_resource type="Script" uid="uid://k17rmrh3w58h" path="res://scripts/Playing_Interface.gd" id="1_mgkp0"]
+[ext_resource type="Texture2D" uid="uid://yp1ovluypps2" path="res://assets/Hologram UI/Icons/31.png" id="2_7w6ex"]
 [ext_resource type="Texture2D" uid="uid://cg1imcc2lvl53" path="res://assets/Hologram UI/Icons/04.png" id="2_juxq4"]
+[ext_resource type="Texture2D" uid="uid://dmsalt8ryhduf" path="res://assets/Hologram UI/Icons/07.png" id="3_8k22v"]
 [ext_resource type="Texture2D" uid="uid://cxi7xytyq34jb" path="res://assets/Hologram UI/progressbar.png" id="3_kevdd"]
 [ext_resource type="Texture2D" uid="uid://bko2uva3g3v34" path="res://assets/Hologram UI/progressbar_complete.png" id="4_040ao"]
 [ext_resource type="Texture2D" uid="uid://dkqyr7jarfjc7" path="res://assets/Hologram UI/Card X1 (2).png" id="6_040ao"]
@@ -49,6 +51,49 @@ offset_top = -59.0
 offset_right = 144.0
 grow_vertical = 0
 
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/BottomLeft"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 30
+
+[node name="Experience" type="HBoxContainer" parent="Control/BottomLeft/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+
+[node name="Icon" type="TextureRect" parent="Control/BottomLeft/HBoxContainer/Experience"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("2_7w6ex")
+stretch_mode = 4
+
+[node name="ExperienceLabel" type="Label" parent="Control/BottomLeft/HBoxContainer/Experience"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+text = "0"
+label_settings = SubResource("LabelSettings_6sd77")
+
+[node name="PowerPoints" type="HBoxContainer" parent="Control/BottomLeft/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+
+[node name="Icon" type="TextureRect" parent="Control/BottomLeft/HBoxContainer/PowerPoints"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("3_8k22v")
+stretch_mode = 4
+
+[node name="PowerPointsLabel" type="Label" parent="Control/BottomLeft/HBoxContainer/PowerPoints"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+text = "0"
+label_settings = SubResource("LabelSettings_6sd77")
+
 [node name="ProgressBarBox" type="HBoxContainer" parent="Control/BottomLeft"]
 layout_mode = 2
 theme_override_constants/separation = 8
@@ -91,8 +136,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -250.0
-offset_top = -150.0
+offset_left = -258.0
+offset_top = -158.0
+offset_right = -8.0
+offset_bottom = -8.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxTexture_1")
@@ -132,7 +179,7 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -250.0
-offset_bottom = 216.0
+offset_bottom = 144.0
 grow_horizontal = 0
 theme_override_styles/panel = SubResource("StyleBoxTexture_040ao")
 
@@ -181,40 +228,6 @@ text = "Run"
 label_settings = SubResource("LabelSettings_6sd77")
 
 [node name="RunLabel" type="Label" parent="Control/UpRight/VBoxContainer/HBoxContainer3"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 10
-text = "0"
-label_settings = SubResource("LabelSettings_6sd77")
-
-[node name="Experience" type="HBoxContainer" parent="Control/UpRight/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/separation = 16
-
-[node name="Label" type="Label" parent="Control/UpRight/VBoxContainer/Experience"]
-layout_mode = 2
-text = "EXP"
-label_settings = SubResource("LabelSettings_6sd77")
-
-[node name="ExperienceLabel" type="Label" parent="Control/UpRight/VBoxContainer/Experience"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 10
-text = "0"
-label_settings = SubResource("LabelSettings_6sd77")
-
-[node name="PowerPoints" type="HBoxContainer" parent="Control/UpRight/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/separation = 16
-
-[node name="Label" type="Label" parent="Control/UpRight/VBoxContainer/PowerPoints"]
-layout_mode = 2
-text = "Power points "
-label_settings = SubResource("LabelSettings_6sd77")
-
-[node name="PowerPointsLabel" type="Label" parent="Control/UpRight/VBoxContainer/PowerPoints"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 10
