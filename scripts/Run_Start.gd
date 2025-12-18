@@ -2,8 +2,6 @@ extends Node2D
 
 @onready var character_body_2d: CharacterBody2D = $CharacterBody2D
 
-
-
 func _ready() -> void:
 	GameGlobals.initialize_game({
 	"level": 1,

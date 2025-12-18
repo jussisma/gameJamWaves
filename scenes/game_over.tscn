@@ -1,9 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://bdtkqptxfxmyc"]
+[gd_scene load_steps=7 format=3 uid="uid://bdtkqptxfxmyc"]
 
 [ext_resource type="Script" uid="uid://buitu5y5il0bc" path="res://scripts/game_over.gd" id="1_xeevv"]
+[ext_resource type="Texture2D" uid="uid://b61yk5kodrs1" path="res://assets/Hologram UI/Card X2 (2).png" id="2_7m3ot"]
 [ext_resource type="FontFile" uid="uid://c8w73jcv0ude5" path="res://assets/Fonts/Space_Mono/SpaceMono-Bold.ttf" id="2_wqhvx"]
 [ext_resource type="Texture2D" uid="uid://chhcbo3kvqt1q" path="res://assets/Hologram UI/Button Normal.png" id="3_racf3"]
 [ext_resource type="Texture2D" uid="uid://b51t2wdp2voy6" path="res://assets/Hologram UI/Button Active.png" id="4_7m3ot"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v3hpu"]
+content_margin_left = 12.0
+content_margin_top = 18.0
+content_margin_right = 12.0
+content_margin_bottom = 12.0
+texture = ExtResource("2_7m3ot")
 
 [node name="GameOver" type="Control"]
 layout_mode = 3
@@ -14,26 +22,35 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xeevv")
 
-[node name="BoxContainer" type="VBoxContainer" parent="."]
+[node name="Bg" type="PanelContainer" parent="."]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.2921875
-anchor_top = 0.37222221
-anchor_right = 0.7078125
-anchor_bottom = 0.62777776
-offset_bottom = 3.0517578e-05
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -640.0
+offset_top = -360.0
+offset_right = 640.0
+offset_bottom = 360.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_v3hpu")
+
+[node name="BoxContainer" type="VBoxContainer" parent="Bg"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 metadata/_edit_use_anchors_ = true
 
-[node name="Title" type="Label" parent="BoxContainer"]
+[node name="Title" type="Label" parent="Bg/BoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 theme_override_fonts/font = ExtResource("2_wqhvx")
 theme_override_font_sizes/font_size = 124
 text = "YOU WIN"
 
-[node name="Button" type="TextureButton" parent="BoxContainer"]
+[node name="Button" type="TextureButton" parent="Bg/BoxContainer"]
 custom_minimum_size = Vector2(171, 57)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -42,7 +59,7 @@ texture_normal = ExtResource("3_racf3")
 texture_pressed = ExtResource("4_7m3ot")
 stretch_mode = 0
 
-[node name="Label" type="Label" parent="BoxContainer/Button"]
+[node name="Label" type="Label" parent="Bg/BoxContainer/Button"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -59,4 +76,4 @@ theme_override_fonts/font = ExtResource("2_wqhvx")
 theme_override_font_sizes/font_size = 24
 text = "RESTART"
 
-[connection signal="pressed" from="BoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Bg/BoxContainer/Button" to="." method="_on_button_pressed"]
