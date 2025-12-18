@@ -1,7 +1,14 @@
 extends Node
 
+var scene = load("res://scenes/game_over.tscn").instantiate()
+
+# Signals
+signal game_won
+signal game_lost
+
 # State of the game
 var is_game_playing: bool = false
+var is_game_initialized: bool = false
 
 # Player reference
 var player: CharacterBody2D
@@ -24,6 +31,8 @@ var max_health: float = 0.0
 var health: float:
 	set(value):
 		health = clamp(value, 0.0, max_health)
+		if health <= 0.0 and is_game_initialized and is_game_playing:
+			player_lost()
 var money: int = 0
 var ammo: int = 0
 var damage: float = 50.0
@@ -54,6 +63,7 @@ func initialize_game(config: Dictionary) -> void:
 
 	current_weapon_index = 0
 	is_game_playing = true
+	is_game_initialized = true
 
 	# Initialize the weapons equipped
 	weapons_equipped.clear()
@@ -116,3 +126,21 @@ func upgrade_weapon(weapon_name: String, property: String, value) -> void:
 
 func stop_game() -> void:
 	is_game_playing = false
+
+
+# Player died
+func player_lost() -> void:
+	game_lost.emit()
+	_load_game_over_scene(false)
+
+# Player won
+func player_win() -> void:
+	game_won.emit()
+	_load_game_over_scene(true)
+
+# Load the game over scene
+func _load_game_over_scene(isWinning: bool) -> void:
+	scene.isWinning = isWinning
+	get_tree().root.add_child(scene)
+	if get_tree().current_scene:
+		get_tree().current_scene.queue_free()
