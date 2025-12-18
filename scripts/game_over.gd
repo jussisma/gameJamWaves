@@ -1,7 +1,7 @@
 extends Control
 
 @export var isWinning = true
-@onready var title: Label = $BoxContainer/Title
+@onready var title: Label = $Bg/BoxContainer/Title
 
 func _ready() -> void:
 	if (isWinning):

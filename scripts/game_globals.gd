@@ -1,7 +1,5 @@
 extends Node
 
-var scene = load("res://scenes/game_over.tscn").instantiate()
-
 # Signals
 signal game_won
 signal game_lost
@@ -140,6 +138,7 @@ func player_win() -> void:
 
 # Load the game over scene
 func _load_game_over_scene(isWinning: bool) -> void:
+	var scene = load("res://scenes/game_over.tscn").instantiate()
 	scene.isWinning = isWinning
 	get_tree().root.add_child(scene)
 	if get_tree().current_scene:

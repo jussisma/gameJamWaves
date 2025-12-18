@@ -1,9 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://n7uj0tl1h8xp"]
+[gd_scene load_steps=7 format=3 uid="uid://n7uj0tl1h8xp"]
 
 [ext_resource type="Script" uid="uid://7ygflhkn7fqq" path="res://scripts/main.gd" id="1_h2yge"]
 [ext_resource type="Texture2D" uid="uid://chhcbo3kvqt1q" path="res://assets/Hologram UI/Button Normal.png" id="2_jyhfs"]
+[ext_resource type="Texture2D" uid="uid://cmr7x1ak4x2m1" path="res://assets/Gemini_Generated_Image_ln7e3kln7e3kln7e.png" id="2_tbgi4"]
 [ext_resource type="Texture2D" uid="uid://b51t2wdp2voy6" path="res://assets/Hologram UI/Button Active.png" id="3_tbgi4"]
 [ext_resource type="FontFile" uid="uid://c8w73jcv0ude5" path="res://assets/Fonts/Space_Mono/SpaceMono-Bold.ttf" id="5_tbgi4"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tefeu"]
+content_margin_left = 12.0
+content_margin_top = 18.0
+content_margin_right = 12.0
+content_margin_bottom = 12.0
+texture = ExtResource("2_tbgi4")
 
 [node name="Start Game" type="Node2D"]
 script = ExtResource("1_h2yge")
@@ -14,27 +22,31 @@ anchors_preset = 0
 offset_right = 1280.0
 offset_bottom = 720.0
 
-[node name="Button" type="TextureButton" parent="Control"]
-custom_minimum_size = Vector2(171, 57)
+[node name="Bg" type="PanelContainer" parent="Control"]
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -85.5
-offset_top = -120.0
-offset_right = 85.5
-offset_bottom = -63.0
+anchor_bottom = 0.5
+offset_left = -640.0
+offset_top = -360.0
+offset_right = 640.0
+offset_bottom = 360.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_tefeu")
+
+[node name="Button" type="TextureButton" parent="Control/Bg"]
+custom_minimum_size = Vector2(171, 57)
+layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 4
+size_flags_vertical = 8
 texture_normal = ExtResource("2_jyhfs")
 texture_pressed = ExtResource("3_tbgi4")
 stretch_mode = 0
 
-[node name="Label" type="Label" parent="Control/Button"]
+[node name="Label" type="Label" parent="Control/Bg/Button"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -51,4 +63,4 @@ theme_override_fonts/font = ExtResource("5_tbgi4")
 theme_override_font_sizes/font_size = 24
 text = "START"
 
-[connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Control/Bg/Button" to="." method="_on_button_pressed"]
