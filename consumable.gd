@@ -43,6 +43,7 @@ func _on_body_entered(body):
 	if body.is_in_group("player"):
 		apply_effect()
 		queue_free()
+		AudioManager.play_sfx("consume")
 
 func apply_effect():
 	match tipo_actual:
@@ -65,5 +66,4 @@ func apply_effect():
 func randomize_type():
 	# Solo cambiamos el dato. No forzamos la animación aquí.
 	# La animación se actualizará automáticamente cuando se ejecute _ready()
-	#tipo_actual = Tipo.values().pick_random()
-	tipo_actual = Tipo.MONEY
+	tipo_actual = Tipo.values().pick_random()
