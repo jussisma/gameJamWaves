@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://cpxvnmu2prhse"]
+[gd_scene load_steps=15 format=3 uid="uid://cpxvnmu2prhse"]
 
 [ext_resource type="Script" uid="uid://k17rmrh3w58h" path="res://scripts/Playing_Interface.gd" id="1_mgkp0"]
 [ext_resource type="Texture2D" uid="uid://yp1ovluypps2" path="res://assets/Hologram UI/Icons/31.png" id="2_7w6ex"]
 [ext_resource type="Texture2D" uid="uid://cg1imcc2lvl53" path="res://assets/Hologram UI/Icons/04.png" id="2_juxq4"]
 [ext_resource type="Texture2D" uid="uid://dmsalt8ryhduf" path="res://assets/Hologram UI/Icons/07.png" id="3_8k22v"]
+[ext_resource type="FontFile" uid="uid://c8w73jcv0ude5" path="res://assets/Fonts/Space_Mono/SpaceMono-Bold.ttf" id="3_j0iuv"]
 [ext_resource type="Texture2D" uid="uid://cxi7xytyq34jb" path="res://assets/Hologram UI/progressbar.png" id="3_kevdd"]
 [ext_resource type="Texture2D" uid="uid://bko2uva3g3v34" path="res://assets/Hologram UI/progressbar_complete.png" id="4_040ao"]
 [ext_resource type="Texture2D" uid="uid://8lslrjoeq5ix" path="res://assets/guns/BazookaM20.png" id="6_kevdd"]
@@ -77,6 +78,7 @@ stretch_mode = 4
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 10
+theme_override_fonts/font = ExtResource("3_j0iuv")
 text = "0"
 label_settings = SubResource("LabelSettings_6sd77")
 
@@ -96,6 +98,7 @@ stretch_mode = 4
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 10
+theme_override_fonts/font = ExtResource("3_j0iuv")
 text = "0"
 label_settings = SubResource("LabelSettings_6sd77")
 
@@ -131,6 +134,7 @@ stretch_mode = 5
 [node name="PercentageLabel" type="Label" parent="Control/BottomLeft/ProgressBarBox/HealthBar/IconContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_j0iuv")
 text = "50%"
 label_settings = SubResource("LabelSettings_6sd77")
 
@@ -165,6 +169,7 @@ stretch_mode = 5
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_j0iuv")
 text = "gun name"
 label_settings = SubResource("LabelSettings_6sd77")
 horizontal_alignment = 1
@@ -173,6 +178,7 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_j0iuv")
 text = "amu/max"
 label_settings = SubResource("LabelSettings_6sd77")
 horizontal_alignment = 1
