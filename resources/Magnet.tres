@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ShopItemData" load_steps=3 format=3 uid="uid://bsfuk3re302ty"]
 
-[ext_resource type="Script" uid="uid://eoyxksdg7apm" path="res://data/shop_item_data.gd" id="1_asden"]
+[ext_resource type="Script" path="res://data/shop_item_data.gd" id="1_asden"]
 [ext_resource type="Texture2D" uid="uid://b34uh3dax6ygo" path="res://assets/shop/icon_magnet.svg" id="1_avln7"]
 
 [resource]
@@ -10,6 +10,5 @@ name = "Matter Attractor"
 description = "A portable gravity well generator. It bends local space-time to pull valuable resources directly into your pockets. Laziness is the mother of invention. 
 
 Effect: Automatically collects items from a distance."
-price = 500
+price = 150
 icon = ExtResource("1_avln7")
-metadata/_custom_type_script = "uid://eoyxksdg7apm"

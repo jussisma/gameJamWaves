@@ -88,7 +88,6 @@ func _physics_process(delta: float) -> void:
 			GameGlobals.power_points = GameGlobals.power_points - 15
 func shoot() -> void:
 	if bullet_scene == null:
-		print("Błąd: Nie przypisano bullet_scene w Inspektorze gracza!")
 		return
 
 	# 1. COMPROBAR MUNICIÓN
@@ -148,7 +147,6 @@ func _on_teleport_finished() -> void:
 	
 func place_gravity_pillar() -> void:
 	if pillar_scene == null:
-		print("Błąd: Nie przypisano pillar_scene w Inspektorze!")
 		return
 		
 	var pillar = pillar_scene.instantiate()

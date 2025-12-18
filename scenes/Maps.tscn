@@ -1,16 +1,17 @@
-[gd_scene load_steps=22 format=4 uid="uid://btf3bbxjdist"]
+[gd_scene load_steps=23 format=4 uid="uid://btf3bbxjdist"]
 
 [ext_resource type="Script" uid="uid://c6ij8nsx8wcw4" path="res://scripts/Run_Start.gd" id="1_1s6ju"]
 [ext_resource type="TileSet" uid="uid://i3efm74wxfiw" path="res://tilesets/Sci_fi_Tileset.tres" id="1_6c7kk"]
 [ext_resource type="PackedScene" uid="uid://bml3lwe0ijbcs" path="res://scenes/astronaut.tscn" id="1_ho0kc"]
 [ext_resource type="PackedScene" uid="uid://cpxvnmu2prhse" path="res://scenes/Playing_Interface.tscn" id="1_ukjry"]
 [ext_resource type="Texture2D" uid="uid://yg2e7sr78jeo" path="res://materials/Light.tres" id="2_etni6"]
-[ext_resource type="Script" uid="uid://boyou3byg33dc" path="res://red_light.gd" id="3_jlul1"]
-[ext_resource type="Script" uid="uid://dstmg5pa7g58m" path="res://Light.gd" id="4_p0rfh"]
+[ext_resource type="Script" path="res://red_light.gd" id="3_jlul1"]
+[ext_resource type="Script" path="res://Light.gd" id="4_p0rfh"]
 [ext_resource type="PackedScene" uid="uid://dlwgi1jenrac8" path="res://door.tscn" id="9_oboxi"]
 [ext_resource type="Texture2D" uid="uid://d0pjr32kiorhf" path="res://assets/TileMap_SF/tileset_sf.png" id="10_gb7hl"]
 [ext_resource type="Texture2D" uid="uid://cv1dmsbbm7cm1" path="res://assets/tiles_laboratory_LandOfPixels/16px/tilesWalls.png" id="11_mvs67"]
 [ext_resource type="Texture2D" uid="uid://c36h7rdm5w5ds" path="res://assets/tiles_laboratory_LandOfPixels/16px/tilesStuff.png" id="12_log2m"]
+[ext_resource type="PackedScene" uid="uid://dff3khn5sn0fb" path="res://scenes/cosmic_shop.tscn" id="13_mvs67"]
 [ext_resource type="Texture2D" uid="uid://dlk5200r8w1c5" path="res://assets/tiles_laboratory_LandOfPixels/16px/tilesFloor.png" id="13_t71l2"]
 
 [sub_resource type="Gradient" id="Gradient_74u2i"]
@@ -2625,6 +2626,13 @@ sources/3 = SubResource("TileSetAtlasSource_d80r6")
 script = ExtResource("1_1s6ju")
 
 [node name="Playing_Interface" parent="." instance=ExtResource("1_ukjry")]
+
+[node name="CosmicShop" parent="Playing_Interface" instance=ExtResource("13_mvs67")]
+visible = false
+offset_left = -1.0
+offset_top = 4.0
+offset_right = -1.0
+offset_bottom = 4.0
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." groups=["wall"]]
 position = Vector2(5, 1)
