@@ -32,7 +32,7 @@ var health: float:
 	set(value):
 		health = clamp(value, 0.0, max_health)
 		if health <= 0.0 and is_game_initialized and is_game_playing:
-			_on_player_died()
+			player_lost()
 var money: int = 0
 var ammo: int = 0
 var damage: float = 50.0
@@ -129,12 +129,12 @@ func stop_game() -> void:
 
 
 # Player died
-func _on_player_died() -> void:
+func player_lost() -> void:
 	game_lost.emit()
 	_load_game_over_scene(false)
 
 # Player won
-func _on_player_won() -> void:
+func player_win() -> void:
 	game_won.emit()
 	_load_game_over_scene(true)
 

@@ -10,4 +10,4 @@ func _ready() -> void:
 	"health": 100.0,
 	"weapons": ["Glock P80", "Revolver Colt 45", "Submachine MP5A3", "AK47", "Bazooka M20"],
 	"player": character_body_2d
-})
+	})
