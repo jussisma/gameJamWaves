@@ -4,48 +4,31 @@ class_name Door
 signal door_opened(door)
 
 @export var cost: int = 100
-@export var door_layer: int = 0
-
-# Définir les 16 tuiles de la porte (positions relatives)
-# Exemple pour une porte 4x4
-@export var door_tiles: Array[Vector2i] = [
-	Vector2i(64,36), Vector2i(65,36), Vector2i(66,36), Vector2i(67,36),  # Rangée 1
-	Vector2i(64,37), Vector2i(65,37), Vector2i(66,37), Vector2i(67,37),  # Rangée 2
-	Vector2i(64,38), Vector2i(65,38), Vector2i(66,38), Vector2i(67,38),  # Rangée 3
-	Vector2i(64,39), Vector2i(65,39), Vector2i(66,39), Vector2i(67,39)   # Rangée 4
-]
-
-# Position de départ de la porte dans le TileMap (coin supérieur gauche)
-@export var door_start_position: Vector2i = Vector2i(10, 5)
-
-# Atlas coords pour la porte fermée (16 tuiles)
-@export var closed_door_atlas: Array[Vector2i] = [
-	Vector2i(64,36), Vector2i(65,36), Vector2i(66,36), Vector2i(67,36),  # Rangée 1
-	Vector2i(64,37), Vector2i(65,37), Vector2i(66,37), Vector2i(67,37),  # Rangée 2
-	Vector2i(64,38), Vector2i(65,38), Vector2i(66,38), Vector2i(67,38),  # Rangée 3
-	Vector2i(64,39), Vector2i(65,39), Vector2i(66,39), Vector2i(67,39)
-]
-
-# Atlas coords pour la porte ouverte (16 tuiles)
-@export var open_door_atlas: Array[Vector2i] = [
-	Vector2i(68,36), Vector2i(69,36), Vector2i(70,36), Vector2i(71,36),
-	Vector2i(68,37), Vector2i(69,37), Vector2i(70,37), Vector2i(71,37),
-	Vector2i(68,38), Vector2i(69,38), Vector2i(70,38), Vector2i(71,38),
-	Vector2i(68,39), Vector2i(69,39), Vector2i(70,39), Vector2i(71,39)
-]
+@export var debug_mode: bool = true
 
 var is_open = false
 var player_in_range = false
 var player_ref = null
 
 func _ready():
+	# Démarrer avec l'animation "closed"
+	$AnimatedSprite2D.play("closed")
+	
 	$Area2D.body_entered.connect(_on_area_body_entered)
 	$Area2D.body_exited.connect(_on_area_body_exited)
+	
+	if debug_mode:
+		print("[DEBUG MODE ACTIVÉ] Porte ", name, " - ouverture automatique au contact")
 
 func _on_area_body_entered(body):
 	if body.is_in_group("player"):
 		player_in_range = true
 		player_ref = body
+		print("Joueur détecté près de la porte")
+		
+		if debug_mode and not is_open:
+			print("[DEBUG] Ouverture automatique sans paiement")
+			open_door()
 
 func _on_area_body_exited(body):
 	if body.is_in_group("player"):
@@ -53,25 +36,27 @@ func _on_area_body_exited(body):
 		player_ref = null
 
 func _input(event):
-	if player_in_range and event.is_action_pressed("interact") and not is_open:
+	if not debug_mode and player_in_range and event.is_action_pressed("interact") and not is_open:
 		attempt_open()
 
 func attempt_open():
+	print("Tentative d'ouverture - Coût: ", cost)
 	if player_ref and player_ref.has_method("spend_money"):
 		if player_ref.spend_money(cost):
 			open_door()
+		else:
+			print("Pas assez d'argent!")
 
 func open_door():
+	print("=== OUVERTURE DE LA PORTE ===")
 	is_open = true
 	
 	# Désactiver les collisions
 	$StaticBody2D/CollisionShape2D.set_deferred("disabled", true)
+	print("✓ Collisions désactivées")
 	
-	# Changer les 16 tuiles de la porte
-	var source_id = $TileMap.get_cell_source_id(door_layer, door_start_position)
+	# Jouer l'animation d'ouverture
+	$AnimatedSprite2D.play("open")
 	
-	for i in range(door_tiles.size()):
-		var cell_pos = door_start_position + door_tiles[i]
-		$TileMap.set_cell(door_layer, cell_pos, source_id, open_door_atlas[i])
-	
+	print("✓ Porte ouverte!")
 	door_opened.emit(self)
