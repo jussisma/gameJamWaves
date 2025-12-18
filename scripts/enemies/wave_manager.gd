@@ -10,15 +10,14 @@ signal all_waves_completed
 @export var time_between_waves: float = 3.0
 @export var time_between_spawns: float = 0.5
 
-# Configuration of the waves : [number of enemies per wave]
 @export var waves: Array[int] = [3, 5, 7, 10, 15]
 
 var current_wave: int = 0
 var enemies_alive: int = 0
 var is_spawning: bool = false
+var last_spawn_index: int = 0 # CORRECCIÓN 1: Variable para rotar puntos
 
 func _ready() -> void:
-	# Connect to the enemy group to track the deaths
 	await get_tree().process_frame
 	start_wave()
 
@@ -34,9 +33,8 @@ func start_wave() -> void:
 	print("=== Wave ", current_wave, " started! (", enemy_count, " enemies) ===")
 	wave_started.emit(current_wave)
 	
-	# Update GameGlobals if you want to display the wave number
-	if GameGlobals:
-		GameGlobals.level = current_wave
+	if get_node_or_null("/root/GameGlobals"): # Pequeña protección por si no existe
+		get_node("/root/GameGlobals").level = current_wave
 	
 	is_spawning = true
 	await _spawn_enemies(enemy_count)
@@ -47,31 +45,45 @@ func _spawn_enemies(count: int) -> void:
 		_spawn_single_enemy()
 		await get_tree().create_timer(time_between_spawns).timeout
 
+# --- AQUÍ ESTÁN LOS CAMBIOS IMPORTANTES ---
 func _spawn_single_enemy() -> void:
 	if enemy_scene == null or spawn_points.is_empty():
-		push_error("WaveManager: enemy_scene or spawn_points not configured!")
+		push_error("WaveManager: Configura la escena o los puntos!")
 		return
 	
-	# Filter out null spawn points and choose a random one
+	# CORRECCIÓN 1: Usar rotación en vez de random para evitar superposiciones
 	var valid_spawn_points = spawn_points.filter(func(p): return p != null)
-	if valid_spawn_points.is_empty():
-		push_error("WaveManager: No valid spawn points!")
-		return
-	
-	var spawn_point = valid_spawn_points.pick_random()
+	if valid_spawn_points.is_empty(): return
+
+	# Avanzamos al siguiente punto de la lista
+	last_spawn_index = (last_spawn_index + 1) % valid_spawn_points.size()
+	var spawn_point = valid_spawn_points[last_spawn_index]
 	
 	var enemy = enemy_scene.instantiate()
 	enemy.global_position = spawn_point.global_position
 	
-	# Connect the death signal to track
-	enemy.died.connect(_on_enemy_died)
+	# CORRECCIÓN 2: Decirle al enemigo quién es el jugador
+	# Asumimos que el enemigo tiene una variable llamada 'target' o 'player'
+	var player = get_tree().get_first_node_in_group("player")
+	if player:
+		# Intenta asignar el target si el script del enemigo tiene esa variable
+		if "target" in enemy:
+			enemy.target = player
+		elif "player" in enemy:
+			enemy.player = player
+	
+	# Conectar señal de muerte
+	if enemy.has_signal("died"):
+		enemy.died.connect(_on_enemy_died)
+	else:
+		push_error("El enemigo no tiene señal 'died'!!")
 	
 	enemies_alive += 1
 	get_parent().add_child(enemy)
 
 func _on_enemy_died() -> void:
 	enemies_alive -= 1
-	print("Enemy died. Remaining: ", enemies_alive)
+	# print("Enemy died. Remaining: ", enemies_alive)
 	
 	if enemies_alive <= 0 and not is_spawning:
 		_on_wave_cleared()
@@ -79,7 +91,5 @@ func _on_enemy_died() -> void:
 func _on_wave_cleared() -> void:
 	print("=== Wave ", current_wave, " completed! ===")
 	wave_completed.emit(current_wave)
-	
-	# Pause before the next wave
 	await get_tree().create_timer(time_between_waves).timeout
 	start_wave()
